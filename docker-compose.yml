@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres
+    restart: always
+    volumes:
+      - db-data:/var/lib/postgresql/data:cached
+    ports:
+      - "4444:5432"
+    environment:
+      POSTGRES_PASSWORD: 123456

@@ -1,0 +1,153 @@
+AllCops:
+  SuggestExtensions: false
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  NewCops: enable
+  TargetRubyVersion: 3.0.0
+  Exclude:
+    - bin/*
+    - doc/**/*
+    - db/schema.rb
+    - log/**/*
+    - public/**/*
+    - storage/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - node_modules/**/*
+    - config/puma.rb
+    - config.ru
+    - Rakefile
+    - config/spring.rb
+    - lib/app_mode/*
+    - lib/app_mode.rb
+    - spec/support/spec/*
+    - spec/lib/**/*
+    - spec/spec_helper.rb
+    - spec/support/rails/factory_bot_rails.rb
+    - spec/app/models/_rails_helper.rb
+    - spec/app/services/_rails_helper.rb
+    - lib/service_input.rb
+    - lib/feature/attr_magic.rb
+    - lib/feature/default_for.rb
+
+Layout/TrailingWhitespace:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 170
+  Exclude:
+    - db/**/*
+Metrics/ParameterLists:
+  Max: 6
+Metrics/ClassLength:
+  Max: 200
+  Exclude:
+    - db/**/*
+Metrics/MethodLength:
+  Max: 30
+  Exclude:
+    - db/**/*
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - config/**/*
+    - spec/**/*
+    - db/**/*
+    - lib/tasks/auto_annotate_models.rake
+Metrics/AbcSize:
+  Max: 30
+  Exclude:
+    - db/**/*
+    - spec/app/services/schedule_pulsechecker_service_spec.rb
+Naming/FileName:
+  Exclude:
+    - config/initializers/rswag-ui.rb
+Naming/VariableNumber:
+  Enabled: true
+  Exclude:
+    - spec/app/services/*
+Naming/PredicateName:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+Lint/DuplicateBranch:
+  Enabled: true
+Lint/DuplicateRegexpCharacterClassElement:
+  Enabled: true
+Lint/EmptyBlock:
+  Enabled: true
+Lint/EmptyClass:
+  Enabled: true
+Lint/NoReturnInBeginEndBlocks:
+  Enabled: true
+Lint/ToEnumArguments:
+  Enabled: true
+Lint/UnmodifiedReduceAccumulator:
+  Enabled: true
+Style/ArgumentsForwarding:
+  Enabled: true
+Style/CollectionCompact:
+  Enabled: true
+Style/DocumentDynamicEvalDefinition:
+  Enabled: true
+Style/NegatedIfElseCondition:
+  Enabled: true
+Style/NilLambda:
+  Enabled: true
+Style/RedundantArgument:
+  Enabled: true
+Style/SwapValues:
+  Enabled: true
+Layout/ElseAlignment:
+  Enabled: true
+  Exclude:
+    - lib/feature/attr_magic.rb
+    - lib/service_input.rb
+Layout/SpaceBeforeBrackets:
+  Enabled: true
+Lint/AmbiguousAssignment:
+  Enabled: true
+Lint/UnexpectedBlockArity:
+  Enabled: true
+Style/HashExcept:
+  Enabled: true
+Lint/DeprecatedConstants:
+  Enabled: true
+Lint/LambdaWithoutLiteralBlock:
+  Enabled: true
+Lint/NumberedParameterAssignment:
+  Enabled: true
+Lint/OrAssignmentToConstant:
+  Enabled: true
+Lint/RedundantDirGlobSort:
+  Enabled: true
+Lint/SymbolConversion:
+  Enabled: true
+Lint/TripleQuotes:
+  Enabled: true
+Lint/UnderscorePrefixedVariableName:
+  Enabled: true
+  Exclude:
+    - app/services/application_service.rb
+Style/Alias:
+  Enabled: true
+  Exclude:
+    - app/services/*
+Style/CommentedKeyword:
+  Enabled: false
+Style/EndlessMethod:
+  Enabled: true
+Style/IfWithBooleanLiteralBranches:
+  Enabled: true
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Gemspec/DeprecatedAttributeAssignment:
+  Enabled: true
+Style/HashConversion:
+  Enabled: true
+Style/StringChars:
+  Enabled: true

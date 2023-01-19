@@ -1,0 +1,11 @@
+<span class="user">
+  <span class="user-name">
+    <% if request.path == user_path(user) %>
+      <%= user.username %>
+      <%= user.email %>
+      <%= user.phone_number %>
+    <% else %>
+      <%= link_to user.username, user_path(user) %>
+    <% end %>
+  </span>
+</span>
