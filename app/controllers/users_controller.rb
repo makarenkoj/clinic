@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: I18n.t('controllers.users.updated')
+      redirect_to @user, notice: t('controllers.users.updated')
     else
       render :edit
     end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    redirect_to root_path, notice: I18n.t('controllers.users.destroyed')
+    redirect_to root_path, notice: t('controllers.users.destroyed')
   end
 
   private
@@ -30,6 +30,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :phone_number)
+    params.require(:user).permit(:username, :email, :phone_number, :type)
   end
 end

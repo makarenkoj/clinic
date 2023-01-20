@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Clinic</title>
+    <title><% t('activerecord.app.name') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,105 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="content">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a><%= link_to t('activerecord.app.name'), root_path, class: 'navbar-brand' %></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <% if user_signed_in? %>
+          <div class="collapse navbar-collapse " id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a>
+                  <%= link_to  t('activerecord.attributes.patients'), users_path, class: 'btn btn-dark' %>
+                  <span class="sr-only">
+                (current)
+              </span>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a>
+                  <% if current_user.doctor? %>
+                    <%=link_to t("view.user.type.#{current_user.type}"), current_user.doctor_profile, class: "nav-link, btn btn-dark" %>
+                  <% else %>
+                    <%=link_to t("view.user.type.#{current_user.type}"), current_user.patient_profile, class: "nav-link, btn btn-dark" %>
+                  <% end %>
+                  <span class="sr-only">
+                  (current)
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a>
+                  <%= link_to current_user.username.titleize, current_user, class: "nav-link, btn btn-dark" %>
+                  <span class="sr-only">
+                  (current)
+                  </span>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a>
+                  <%= link_to t('activerecord.attributes.user.sign_out'), destroy_user_session_path, 'data-turbo-method': :delete, class: "nav-link, btn btn-dark" %>
+                  <span class="sr-only">
+                (current)
+              </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        <% else %>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a>
+                  <%= link_to t('activerecord.attributes.user.sign_in'), new_user_session_path, class: "nav-link, btn btn-dark" %>
+                  <span class="sr-only">v
+                (current)
+              </span>
+                </a>
+              </li>
+              <li class="nav-item active">
+                <a>
+                  <%= link_to t('activerecord.attributes.user.sign_up'), new_user_registration_path, class: "nav-link, btn btn-dark" %>
+                  <span class="sr-only">
+                (current)
+              </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        <% end %>
+        <div class="navbar-brand">
+          <div class="lokale">
+            <a><%= link_to emoji_flag("gb"), root_path(locale: :en), class: 'btn swich' %></a>
+            <a><%= link_to emoji_flag("ua"), root_path(locale: :ua), class: 'btn swich' %></a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p id="notice"><%= notice %></p>
+          <%= yield %>
+        </div>
+        <div class="col-md-3">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer page-footer font-small mdb-color darken-3 pt-4">
+    <div class="footer-copyright text-center py-3 container">
+      <p class="text-center">
+        &copy; <%= t('activerecord.app.company') %>
+        <%= l Time.now, format: :year %>
+      </p>
+      <a href="https://blogasik.herokuapp.com/"><%= t('activerecord.app.url') %></a>
+    </div>
+  </footer>
   </body>
 </html>

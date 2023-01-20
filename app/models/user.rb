@@ -1,8 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :login
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, authentication_keys: [:login]
 
@@ -35,9 +33,7 @@ class User < ApplicationRecord
   validates :phone_number, phone: true, presence: true
   validates :type, inclusion: { in: types.keys, message: I18n.t('activerecord.errors.models.user.attributes.type') }
 
-  # def login
-  #   @login || phone_number || email
-  # end
+  after_create :create_profile
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
@@ -45,6 +41,16 @@ class User < ApplicationRecord
       where(conditions.to_h).where(['lower(username) = :value OR lower(email) = :value OR lower(phone_number) = :value', { value: login.downcase }]).first
     elsif conditions.key?(:username) || conditions.key?(:email) || conditions.key?(:phone_number)
       where(conditions.to_h).first
+    end
+  end
+
+  private
+
+  def create_profile
+    if doctor?
+      DoctorProfile.create!(user: self)
+    else
+      PatientProfile.create!(user: self)
     end
   end
 end

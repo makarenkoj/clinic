@@ -1,16 +1,37 @@
 class DoctorProfilesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :check_doctor!
+  before_action :authenticate_user!, except: %i[show]
+  before_action :check_doctor!, except: %i[show]
 
-  def create
-    doctor_profile = current_user.build_doctor_profile
+  def show
+    @doctor_profile = DoctorProfile.find(params[:id])
+  end
 
-    doctor_profile.save!
+  def edit
+    @doctor_profile = DoctorProfile.find(params[:id])
+    redirect_to current_user, notice: t('controllers.profile.not_your') unless @doctor_profile.user == current_user
+  end
 
-    user_url(current_user)
-  rescue ActiveRecord::RecordInvalid, ActiveRecord::RecordNotFound => _e
-    render_json_error(error: format_model_errors(doctor_profile))
-  rescue ArgumentError => e
-    render_json_error(error: e.message)
+  def update
+    @doctor_profile = DoctorProfile.find(params[:id])
+    
+    if @doctor_profile.update(doctor_profile_params)
+      redirect_to @doctor_profile, notice: t('controllers.users.updated')
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @doctor_profile = DoctorProfile.find(params[:id])
+    redirect_to current_user, notice: t('controllers.profile.not_your') unless @doctor_profile.user == current_user
+
+    @doctor_profile.destroy
+    redirect_to root_path, notice: t('controllers.users.destroyed')
+  end
+
+  private
+
+  def doctor_profile_params
+    params.require(:doctor_profile).permit(:description)
   end
 end

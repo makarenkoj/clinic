@@ -1,10 +1,13 @@
-<h1>Editing user</h1>
+<h1><%= t('activerecord.attributes.user.edit_profile')%></h1>
 
-<%= render "form", controller: @user %>
+<div class="row">
+  <div class="col-md-6 buffer-top">
 
-<br>
+    <%= render 'form' %>
+    <%= t('activerecord.attributes.user.or') %>
 
-<div>
-  <%= link_to "Show this user", @user %> |
-  <%= link_to "Back to users", users_path %>
+    <p class="buffer-top">
+      <%= link_to t('activerecord.attributes.user.change_password'), edit_user_registration_path, class: 'btn btn-danger' %>
+    </p>
+  </div>
 </div>

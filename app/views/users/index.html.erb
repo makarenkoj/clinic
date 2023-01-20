@@ -1,22 +1,32 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Users</h1>
-
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
+<table class="table">
+  <% if user_signed_in? %>
+  <thead>
+    <tr>
+    <% if current_user.doctor? %>
+      <th scope="col"><%= t("view.user.type.#{User::PATIENT}") %></th>
+    <% else %>
+      <th scope="col"><%= t("view.user.type.#{User::DOCTOR}") %></th>
+    <% end %>
+    <th scope="col"><%= t('view.user.username')%></th>
+    <th scope="col"><%= t('view.user.email')%></th>
+    <th scope="col"><%= t('view.user.phone_number')%></th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <% @users.each do |user| %>
+    <% unless user.type == current_user.type %>
+      <tr>
+      <td><%= render user  %></td>
+      <td><%= user.username  %></td>
+      <td><%= user.email  %></td>
+      <td><%= user.phone_number  %></td>
+      </tr>
+    <% end %>
+    <% end %>
+    
+  </tbody>
   <% end %>
-</div>
-
-<% if user_signed_in? %>
-  <%= link_to current_user.email, current_user, class: "nav-link, btn btn-dark" %>
-/
-  <%= link_to t('activerecord.attributes.user.sign_out'), destroy_user_session_path, method: :delete, class: "nav-link, btn btn-dark" %>
-<% else %>
-  <%= link_to t('activerecord.attributes.user.sign_in'), new_user_session_path, class: "nav-link, btn btn-dark" %>
-/
-  <%= link_to t('activerecord.attributes.user.sign_up'), new_user_registration_path, class: "nav-link, btn btn-dark" %>
-<% end %>
+</table>

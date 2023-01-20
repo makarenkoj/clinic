@@ -1,0 +1,32 @@
+// app/assets/stylesheets/application.scss
+// ...
+@import "bootstrap";
+// ...
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex-shrink: 0;
+}
+
+.lokale {
+  display: flex;
+  flex-direction: column;
+
+}
+.swich {
+  color: #BBBBBB;
+  font-size: 10px;
+  line-height: 2px;
+}

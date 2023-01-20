@@ -2,9 +2,21 @@
 
 <%= render @user %>
 
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <%= button_to "Destroy this user", @user, method: :delete %>
+<div class="text-center">
+  <% if @user == current_user %>
+    <%= link_to t('activerecord.attributes.user.edit_profile'), edit_user_path(@user), class: 'btn btn-primary buffer-right' %>
+    <%= link_to t('activerecord.attributes.user.delete_profile'), @user, method: :delete,
+              data: { confirm: t('simple_form.labels.defaults.confirm') }, class: "btn btn-danger" %>
+  <% else %>
+    <p><%= t('activerecord.attributes.user.current_user')%></p>
+  <% end %>
 </div>
+
+<%# <% if @user.posts.any? %>
+  <%# <h3><%= t('activerecord.attributes.user.my_posts')</h3> %>
+  <%# <%= render partial: 'posts/post', collection: @user.posts %>
+<%# <% else %>
+  <%# <p class="buffer-top"> %>
+    <%# <%= t('activerecord.attributes.user.writen_posts')%> 
+  <%# </p> %>
+<%# <% end %> 

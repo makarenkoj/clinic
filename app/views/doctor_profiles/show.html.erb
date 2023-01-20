@@ -1,0 +1,27 @@
+<div class="event">
+  <div class="event-info row">
+    <div class="col-md-12">
+      <div class="event-info-inner row">
+        <div class="col-md-12">
+          <div class="event-description">
+            <%= @doctor_profile.user.username %>
+            <p><%= @doctor_profile.user.email %></p> 
+            <p><%= @doctor_profile.user.phone_number %></p> 
+          </div>
+          <div class="event-description">
+            <h1><%= @doctor_profile&.description %></h1>
+          </div>
+          <div class="buffer-both">
+            <% if user_signed_in? && @doctor_profile.user == current_user %>
+              <%= link_to t('activerecord.attributes.user.edit_profile'), edit_doctor_profile_path(@doctor_profile),
+                          class: 'btn btn-primary buffer-right' %>
+              <%= link_to t('activerecord.attributes.user.delete_profile'), @doctor_profile, method: :delete,
+                          data: {confirm: t('activerecord.attributes.user.delete_profile_confirm')},
+                          class: "btn btn-danger" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

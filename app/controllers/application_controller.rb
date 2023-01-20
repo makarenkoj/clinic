@@ -3,13 +3,42 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
 
+  around_action :switch_locale
+
   def check_doctor!
     return if current_user&.doctor?
 
-    render_json_error(error: I18n.t('errors.doctor_only'), status: 403)
+    redirect_to root_path, notice: t('errors.doctor_only')
+  end
+
+  def current_user_can_edit?(model)
+    
+    user_signed_in? && model.user == current_user
+  end
+
+  def after_sign_in_path_for(resource)
+    if resource.doctor?
+      doctor_profile_url(resource.doctor_profile)
+    else
+      patient_profile_path(resource.patient_profile)
+    end
   end
 
   private
+
+  def switch_locale(&action)
+    locale = locale_from_url || I18n.default_locale
+    I18n.with_locale locale, &action
+  end
+
+  def locale_from_url
+    parsed_locale = params[:locale]
+    parsed_locale.to_sym if I18n.available_locales.map(&:to_s).include?(parsed_locale)
+  end
+
+  def default_url_options
+    { locale: I18n.locale }
+  end
 
   def render_not_found(error)
     render_error error: t('activerecord.errors.messages.record_not_found'),
@@ -26,7 +55,7 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    added_attrs = %i[username phone_number email password password_confirmation remember_me]
+    added_attrs = %i[type username phone_number email password password_confirmation remember_me]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :sign_in, keys: %i[login password]
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs

@@ -1,45 +1,15 @@
-<%= form_with(model: @user) do |f| %>
-  <% if @user.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this controller from being saved:</h2>
+<%= simple_form_for @user, html: {multipart: true}, wrappers: :horizontal_multi_select do |f| %>
+  <%= render partial: 'partials/form_errors', locals: {model: @user} %>
 
-      <ul>
-        <% @user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="form-group">
+    <%= f.input :username, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid' %>
+    <%= f.input :phone_number, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid' %>
+    <%= f.input :email, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid' %>
   </div>
 
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div>
-    <%= f.submit %>
+  <div class="actions">
+    <%= f.button :submit, t('activerecord.attributes.user.save'), class: 'btn btn-primary' %>
+    <%= t('activerecord.attributes.user.or') %>
+    <%= link_to t('activerecord.attributes.user.back'), :back, class: 'btn btn-primary' %>
   </div>
 <% end %>

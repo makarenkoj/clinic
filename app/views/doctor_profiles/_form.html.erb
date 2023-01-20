@@ -1,0 +1,12 @@
+<%= simple_form_for @doctor_profile, html: {multipart: true}, wrapper: :vertical_multi_select do |f| %>
+  <%= render partial: 'partials/form_errors', locals: {model: @doctor_profile} %>
+
+  <div class="form-group">
+    <%= f.input :description, as: :text, input_html: {rows: 23, cols: 150 } %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit, t('activerecord.attributes.doctor_profile.save'), class: 'btn btn-primary' %>
+    <%= t('activerecord.attributes.doctor_profile.or') %>
+    <%= link_to t('activerecord.attributes.doctor_profile.back'), :back, class: 'btn btn-primary' %>
+  </div>
+<% end %>
