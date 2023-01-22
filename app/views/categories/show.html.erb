@@ -14,12 +14,17 @@
               <p class="mb-0 text-uppercase"><i class="fas fa-ellipsis-h ms-4 me-2"></i> <span
                   class="text-muted small"><%= doctor.user.email %></span>
                 <span class="ms-3 me-4">|</span></p>
-              <a href="#!">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-2.webp" alt="avatar"
-                  class="img-fluid rounded-circle me-3" width="50">
+              <a>
+                <%# avatar %>
+              <% if doctor.user.image.attached? %>
+                <%= image_tag doctor.user.image, class: "img-fluid rounded-circle me-3", width: "50", alt: "avatar"  %>
+              <% else %>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                class="img-fluid rounded-circle me-3" width="50">
+              <% end %>
               </a>
               <i class="fas fa-plus">
-              <%= link_to t('view.make_an_appointment'), new_doctors_appointment_url, class: "btn btn-outline-dark btn-sm btn-floating" %>
+              <%= link_to t('view.make_an_appointment'), new_doctors_appointment_url(doctor_id: doctor.id), class: "btn btn-outline-dark btn-sm btn-floating" %>
               </i>
             </div>
             <hr class="my-4">
@@ -35,8 +40,13 @@
               <p class="mb-0 text-uppercase"><i class="fas fa-cog me-2"></i> <span
                   class="text-muted small"></span></p>
               <a href="#!">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-2.webp" alt="avatar"
-                  class="img-fluid rounded-circle me-3" width="35">
+              <%# avatar %>
+              <% if patient.user.image.attached? %>
+                <%= image_tag patient.user.image, class: "img-fluid rounded-circle me-3", width: "35", alt: "avatar"  %>
+              <% else %>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                class="img-fluid rounded-circle me-3" width="35">
+              <% end %>
               </a>
             <% end %>
             </div>

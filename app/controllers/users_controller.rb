@@ -12,7 +12,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to @user, notice: t('controllers.users.updated')
+      user_link
     else
       render :edit
     end
@@ -24,6 +24,14 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_link
+    if @user.doctor?
+      redirect_to @user.doctor_profile, notice: t('controllers.users.updated')
+    else
+      redirect_to @user.patient_profile, notice: t('controllers.users.updated')
+    end
+  end
 
   def set_current_user
     @user = current_user

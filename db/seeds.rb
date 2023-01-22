@@ -8,7 +8,7 @@
 password = '123456'
 puts 'Create admin'
 
-# AdminUser.create!(email: 'admin@example.com', password: password, password_confirmation: password) if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: password, password_confirmation: password) if Rails.env.development?
 
 if Rails.env.development?
   puts 'Creating category'

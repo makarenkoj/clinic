@@ -38,7 +38,7 @@
             <% doctor.patient_profiles.each do |patient| %>
               <p class="mb-0 text-uppercase"><i class="fas fa-cog me-2"></i> <span
                   class="text-muted small"></span></p>
-              <a href="#!">
+              <a>
               <%# avatar %>
               <% if patient.user.image.attached? %>
                 <%= image_tag patient.user.image, class: "img-fluid rounded-circle me-3", width: "35", alt: "avatar"  %>
