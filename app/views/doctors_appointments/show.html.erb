@@ -4,8 +4,13 @@
       <%# doctor %>
         <div class="card mb-4">
           <div class="card-body text-center">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-              class="rounded-circle img-fluid" style="width: 150px;">
+          <%# avatar %>
+            <% if @doctor_profile.user.image.attached? %>
+                <%= image_tag @doctor_profile.user.image, class: "rounded-circle img-fluid", style: "width: 250px;", alt: "avatar"  %>
+              <% else %>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px;">
+              <% end %>
             <h5 class="my-3"><%= @doctor_profile.user.username %></h5>
             <p class="text-muted mb-1"><%= @doctor_profile.user.email %></p>
             <p class="text-muted mb-4"><%= @doctor_profile.user.phone_number %></p>
@@ -17,8 +22,13 @@
       <%# patient %>
         <div class="card mb-4">
           <div class="card-body text-center">
-            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
-              class="rounded-circle img-fluid" style="width: 150px;">
+          <%# avatar %>
+            <% if @patient_profile.user.image.attached? %>
+                <%= image_tag @patient_profile.user.image, class: "rounded-circle img-fluid", style: "width: 250px;", alt: "avatar"  %>
+              <% else %>
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                class="rounded-circle img-fluid" style="width: 150px;">
+            <% end %>
             <h5 class="my-3"><%= @patient_profile.user.username %></h5>
             <p class="text-muted mb-1"><%= @patient_profile.user.email %></p>
             <p class="text-muted mb-4"><%= @patient_profile.user.phone_number %></p>

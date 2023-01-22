@@ -10,17 +10,26 @@
   <% end %>
 
   <div class="form-inputs">
+    <%= f.input :image, 
+                label: t('activerecord.attributes.user.avatar'),
+                class: 'form-control mx-1', 
+                error_class: 'is-invalid', 
+                valid_class: 'is-valid' %>
+
     <%= f.input :type,
                 as: :select,
+                label: t('activerecord.attributes.user.user_type'),
                 collection: User::TYPES.keys,
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "type" }%>
     <%= f.input :username,
+                label: t('activerecord.attributes.user.username'),
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "username" }%>
     <%= f.input :phone_number,
+                label: t('activerecord.attributes.user.phone_number'),
                 required: true,
                 autofocus: true,
                 input_html: { autocomplete: "phone_number" }%>
@@ -36,7 +45,6 @@
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
   </div>
-
   <div class="form-actions">
     <%= f.button :submit, t('activerecord.attributes.user.sign_up'), class: "btn btn-large btn-danger", "data-disable-with" => "Submitting.."%>
   </div>

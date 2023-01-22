@@ -19,7 +19,7 @@ class DoctorsAppointmentsController < ApplicationController
   end
 
   def create
-    user_doctor = User.doctor.find_by(username: params[:doctors_appointment][:doctor_profile])
+    user_doctor = User.doctor.find_by(username: params[:doctors_appointment][:doctor_profile].downcase)
 
     redirect_to doctor_profiles_url, notice: t('errors.no_such_doctor') unless user_doctor&.doctor_profile.present?
 

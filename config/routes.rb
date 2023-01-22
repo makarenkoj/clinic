@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :users
     resources :doctor_profiles
     resources :patient_profiles
-    resources :categories, only: %i[index show]
+    resources :categories
     resources :doctors_appointments
 
     root 'users#index'

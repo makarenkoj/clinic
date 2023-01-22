@@ -43,6 +43,9 @@ ua:
         cancel_account: 'Скасувати мій обліковий запис'
         unhappy: 'Нещасливий?'
         delete_profile_confirm: 'Ти впевнений?'
+        phone_number: 'номер телефону +380'
+        user_type: 'тип користувача'
+        username: "ім'я користувача"
       doctor_profile:
         save: 'Зберегти'
         back: 'Повернуться'

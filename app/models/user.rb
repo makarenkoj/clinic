@@ -19,6 +19,9 @@ class User < ApplicationRecord
   has_one :doctor_profile, dependent: :destroy
   has_one :patient_profile, dependent: :destroy
 
+  has_one_attached :image
+  has_many_attached :pictures
+
   enum type: TYPES
 
   validates :email, presence: true, uniqueness: true
@@ -33,6 +36,7 @@ class User < ApplicationRecord
   validates :phone_number, phone: true, presence: true
   validates :type, inclusion: { in: types.keys, message: I18n.t('activerecord.errors.models.user.attributes.type') }
 
+  before_create :username_downcase
   after_create :create_profile
 
   def self.find_for_database_authentication(warden_conditions)
@@ -45,6 +49,12 @@ class User < ApplicationRecord
   end
 
   private
+
+  def username_downcase
+    return unless username.present?
+
+    username.downcase!
+  end
 
   def create_profile
     if doctor?
