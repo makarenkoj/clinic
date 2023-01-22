@@ -21,20 +21,22 @@
         <% if user_signed_in? %>
           <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav ml-auto">
+              <% if current_user.patient? %>
               <li class="nav-item active">
                 <a>
-                  <%= link_to  t('activerecord.attributes.patients'), users_path, class: 'btn btn-dark' %>
+                  <%= link_to  t('view.categories.categories'), categories_path, class: 'btn btn-dark' %>
                   <span class="sr-only">
                 (current)
               </span>
                 </a>
               </li>
+              <% end %>
               <li class="nav-item active">
                 <a>
                   <% if current_user.doctor? %>
-                    <%=link_to t("view.user.type.#{current_user.type}"), current_user.doctor_profile, class: "nav-link, btn btn-dark" %>
+                    <%=link_to t("view.patients"), patient_profiles_url, class: "nav-link, btn btn-dark" %>
                   <% else %>
-                    <%=link_to t("view.user.type.#{current_user.type}"), current_user.patient_profile, class: "nav-link, btn btn-dark" %>
+                    <%=link_to t("view.doctors"), doctor_profiles_url, class: "nav-link, btn btn-dark" %>
                   <% end %>
                   <span class="sr-only">
                   (current)
@@ -43,7 +45,11 @@
               </li>
               <li class="nav-item active">
                 <a>
-                  <%= link_to current_user.username.titleize, current_user, class: "nav-link, btn btn-dark" %>
+                  <% if current_user.doctor? %>
+                    <%= link_to current_user.username.titleize, current_user.doctor_profile, class: "nav-link, btn btn-dark" %>
+                  <% else %>
+                    <%= link_to current_user.username.titleize, current_user.patient_profile, class: "nav-link, btn btn-dark" %>
+                  <% end %>
                   <span class="sr-only">
                   (current)
                   </span>
@@ -92,11 +98,9 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto">
-          <p id="notice"><%= notice %></p>
+        <div class="col-lg-12 col-md-12 mx-auto">
+          <p id="notice" style="color: green"><%= notice %></p>
           <%= yield %>
-        </div>
-        <div class="col-md-3">
         </div>
       </div>
     </div>

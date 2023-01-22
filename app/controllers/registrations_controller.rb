@@ -5,7 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
     if resource.doctor?
       edit_doctor_profile_url(resource.doctor_profile)
     else
-      edit_patient_profile_path(resource.patient_profile)
+      edit_patient_profile_url(resource.patient_profile)
     end
   end
 end

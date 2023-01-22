@@ -36,6 +36,7 @@ en:
         update: 'Update'
         or: 'or'
         edit_profile: 'Edit Profile'
+        edit_description: 'Edit Description'
         delete_profile: 'Delete profile'
         change_password: 'Change password'
         current_user: 'You are not the current user'
@@ -43,6 +44,14 @@ en:
         unhappy: 'Unhappy?'
         delete_profile_confirm: 'Are you sure?'
       doctor_profile:
+        save: 'Save'
+        back: 'Back'
+        or: 'or'
+      patient_profile:
+        save: 'Save'
+        back: 'Back'
+        or: 'or'
+      appointment:
         save: 'Save'
         back: 'Back'
         or: 'or'
@@ -149,6 +158,9 @@ en:
       month: Month
       year: Year
   errors:
+    doctor_only: 'doctor only'
+    patient_only: 'patient only'
+    not_your_appointment: 'this is not your appointment'
     format: "%{attribute} %{message}"
     doctor_only: 'You should have doctor role to access this page'
     messages:
@@ -258,15 +270,18 @@ en:
       year: "%Y"
     pm: "pm"
   controllers:
-      users:
-        updated: 'You have updated your profile'
-        destroyed: 'User was successfully deleted :('
-      profile:
-        not_your: 'This is not your profile!'
-      subscriptions:
-        created: 'You are subscribed to this event'
-        destroyed: 'Member unsubscribed'
-        error: 'Subscribe / unsubscribe did not work'
+    users:
+      updated: 'You have updated your profile'
+      destroyed: 'User was successfully deleted :('
+    profile:
+      not_your: 'This is not your profile!'
+    subscriptions:
+      created: 'You are subscribed to this event'
+      destroyed: 'Member unsubscribed'
+      error: 'Subscribe / unsubscribe did not work'
+    appointments:
+      updated: 'You have updated the appointment'
+      create: 'Create new doctor appointments'
   view:
     user:
       username: 'username'
@@ -278,4 +293,18 @@ en:
     doctor_profile:
       new: 'Doctor profile new'
       edit: 'Doctor profile edit'
-
+    patient_profile:
+      new: 'Patient profile new'
+      edit: 'Patient profile edit'
+    categories:
+      categories: 'Categories'
+      categories_doctors: 'Doctors with this category: '
+    recomendation: 'Recomendation'
+    make_an_appointment: 'Make an appointment'
+    doctors: 'Doctors'
+    patients: 'Patients'
+    appointments:
+      edit: 'Edit doctor record'
+      visit_time: 'Visit date & time'
+      description: 'Description'
+    doctor_size: 'Number of Doctors'

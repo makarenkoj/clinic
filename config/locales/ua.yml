@@ -36,6 +36,7 @@ ua:
         update: 'Оновити'
         or: 'або'
         edit_profile: 'Редактор профілю'
+        edit_description: 'Редагувати опис'
         delete_profile: 'Видалити профіль'
         change_password: 'Змінити пароль'
         current_user: 'Ви не є поточним користувачем'
@@ -43,6 +44,14 @@ ua:
         unhappy: 'Нещасливий?'
         delete_profile_confirm: 'Ти впевнений?'
       doctor_profile:
+        save: 'Зберегти'
+        back: 'Повернуться'
+        or: 'або'
+      patient_profile:
+        save: 'Зберегти'
+        back: 'Повернуться'
+        or: 'або'
+      appointment:
         save: 'Зберегти'
         back: 'Повернуться'
         or: 'або'
@@ -173,6 +182,9 @@ ua:
       month: Місяць
       year: Рік
   errors:
+    doctor_only: 'тільки лікар'
+    patient_only: 'тільки пацієнт'
+    not_your_appointment: 'це не ваше призначення'
     format: "%{attribute} %{message}"
     messages:
       accepted: має бути прийнятий
@@ -317,6 +329,9 @@ ua:
       created: 'Ви підписані на цю подію'
       destroyed: 'Учасник скасував підписку'
       error: 'Підписатися/скасувати підписку не вдалося'
+    appointments:
+      updated: 'Ви оновили призначення'
+      create: 'Завітати до лікаря'
   view:
     user:
       username: "ім'я користувача"
@@ -328,3 +343,18 @@ ua:
     doctor_profile:
       new: 'Hовий профіль лікаря'
       edit: 'Редагування профілю лікаря'
+    patient_profile:
+      new: 'Hовий профіль пацієнта'
+      edit: 'Редагування профілю пацієнта'
+    categories:
+      categories: 'Категорії'
+      categories_doctors: 'Доктора з ціею категоріею: '
+    recomendation: 'Рекомендація'
+    make_an_appointment: 'Записатися на прийом'
+    doctors: 'Лікарі'
+    patients: 'Пацієнти'
+    appointments:
+      edit: 'Редагувати запис до лікаря'
+      visit_time: 'Дата та час відвідування'
+      description: 'Опис'
+    doctor_size: 'Кількість Лікарів'

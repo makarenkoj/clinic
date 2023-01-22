@@ -1,0 +1,48 @@
+<section class="vh-10" style="background-color: #eee;">
+  <div class="container py-3">
+  <h3 class="text-muted mb-1"><%= t('view.doctors') %>:</h3>
+  <% @doctor_profiles.each do |doctor| %>
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-10">
+        <div class="card mb-5" style="border-radius: 15px;">
+          <div class="card-body p-4">
+            <div class="d-flex justify-content-start align-items-center">
+              <%= link_to doctor.user.username.humanize, doctor, class: "btn justify-content-start mb-6" %>
+              <p class="mb-0 text-uppercase"><i class="fas fa-link ms-4 me-2"></i> <span
+                  class="text-muted small"><%= doctor.user.phone_number %></span></p>
+              <p class="mb-0 text-uppercase"><i class="fas fa-ellipsis-h ms-4 me-2"></i> <span
+                  class="text-muted small"><%= doctor.user.email %></span>
+                <span class="ms-3 me-4">|</span></p>
+              <a href="#!">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-2.webp" alt="avatar"
+                  class="img-fluid rounded-circle me-3" width="50">
+              </a>
+              <i class="fas fa-plus">
+              <%= link_to t('view.make_an_appointment'), new_doctors_appointment_url, class: "btn btn-outline-dark btn-sm btn-floating" %>
+              </i>
+            </div>
+            <hr class="my-4">
+            <div class="d-flex justify-content-start align-items-center">
+            <p class="mb-0 text-uppercase"><i class="fas fa-cog me-2"></i> <span class="text-muted small">
+            <% if I18n.locale == :ua %>
+              <%= doctor.categories&.first&.name_ua %>
+            <% else %>
+              <%= doctor.categories&.first&.name_en %>
+            <% end %>
+            </span></p>
+            <% doctor.patient_profiles.each do |patient| %>
+              <p class="mb-0 text-uppercase"><i class="fas fa-cog me-2"></i> <span
+                  class="text-muted small"></span></p>
+              <a href="#!">
+                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-2.webp" alt="avatar"
+                  class="img-fluid rounded-circle me-3" width="35">
+              </a>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</section>

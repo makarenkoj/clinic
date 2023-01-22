@@ -2,7 +2,17 @@
   <%= render partial: 'partials/form_errors', locals: {model: @doctor_profile} %>
 
   <div class="form-group">
-    <%= f.input :description, as: :text, input_html: {rows: 23, cols: 150 } %>
+    <%= f.input :categories,
+                as: :select,
+                collection: I18n.locale == :ua ? Category.all.map(&:name_ua) : Category.all.map(&:name_en),
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: 'category' }%>
+
+    <%= f.input :description,
+                 as: :text,
+                 autofocus: true,
+                 input_html: { rows: 25, cols: 70 } %>
   </div>
   <div class="actions">
     <%= f.button :submit, t('activerecord.attributes.doctor_profile.save'), class: 'btn btn-primary' %>

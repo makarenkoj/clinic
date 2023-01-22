@@ -1,0 +1,86 @@
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card mb-4">
+          <div class="card-body text-center">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+              class="rounded-circle img-fluid" style="width: 150px;">
+            <h5 class="my-3"><%= @patient_profile.user.username %></h5>
+            <p class="text-muted mb-1"><%= @patient_profile.user.phone_number %></p>
+            <p class="text-muted mb-4"><%= @patient_profile.user.email %></p>
+            <div class="d-flex justify-content-center mb-2">
+
+            <% if current_user_can_edit?(@patient_profile) %>
+              <%= link_to t('activerecord.attributes.user.edit_profile'), edit_user_path(@patient_profile.user), class: 'btn btn-primary' %>
+              <%= link_to t('activerecord.attributes.user.delete_profile'), @patient_profile.user, 
+                          data: { turbo_method: :delete, turbo_confirm: t('activerecord.attributes.user.delete_profile_confirm')},
+                          class: "btn btn-danger ms-1" %>
+            <% end %>
+
+            </div>
+          </div>
+        </div>
+
+        <% if current_user_can_edit?(@patient_profile) %>
+        <div class="card mb-4 mb-lg-0">
+          <div class="card-body p-0">
+            <ul class="list-group list-group-flush rounded-3">
+              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                <p class="mb-0"><%= @patient_profile.description %></p>
+              </li>
+              <%= link_to t('activerecord.attributes.user.edit_description'), edit_patient_profile_url(@patient_profile), class: 'btn btn-info' %>
+            </ul>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+      <div class="col-lg-8">
+
+        <% if current_user_can_edit?(@patient_profile) %>
+        <div class="card mb-4">
+          <div class="card-body">
+            <% @patient_profile.doctors_appointments.order(:visit_time).each do |appointment| %>
+            <div class="row">
+              <div class="col-sm-3">
+                <p class="mb-0"><%= link_to appointment.doctor_profile.user.username.humanize, appointment.doctor_profile, class: 'btn btn-light' %></p>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= link_to t('view.recomendacion'), appointment, class: 'btn btn-light' %></p>
+              </div>
+              <div class="col-sm-3">
+              <% if I18n.locale == :ua %>
+                <p class="text-muted mb-0"><%= link_to appointment.doctor_profile.categories.first.name_ua, appointment.doctor_profile.categories.first, class: 'btn btn-light' %></p>
+              <% else %>
+                <p class="text-muted mb-0"><%= link_to appointment.doctor_profile.categories.first.name_en, appointment.doctor_profile.categories.first, class: 'btn btn-light' %></p>
+              <% end %>
+              </div>
+              <div class="col-sm-3">
+                <p class="text-muted mb-0"><%= date_format(appointment.visit_time) %></p>
+              </div>
+            </div>
+            <hr>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+
+        <% unless current_user_can_edit?(@patient_profile) %>
+        <div class="card mb-4">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-sm-12">
+                <p class="mb-0"><%= @patient_profile.description %></p>
+              </div>
+            </div>
+            <hr>
+          </div>
+        </div>
+        <% end %>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

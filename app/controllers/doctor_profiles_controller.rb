@@ -1,6 +1,10 @@
 class DoctorProfilesController < ApplicationController
-  before_action :authenticate_user!, except: %i[show]
-  before_action :check_doctor!, except: %i[show]
+  before_action :authenticate_user!
+  before_action :check_doctor!, except: %i[index show]
+
+  def index
+    @doctor_profiles = DoctorProfile.all
+  end
 
   def show
     @doctor_profile = DoctorProfile.find(params[:id])
@@ -12,8 +16,10 @@ class DoctorProfilesController < ApplicationController
   end
 
   def update
+    update_profile_categorie
+
     @doctor_profile = DoctorProfile.find(params[:id])
-    
+
     if @doctor_profile.update(doctor_profile_params)
       redirect_to @doctor_profile, notice: t('controllers.users.updated')
     else
@@ -21,17 +27,19 @@ class DoctorProfilesController < ApplicationController
     end
   end
 
-  def destroy
-    @doctor_profile = DoctorProfile.find(params[:id])
-    redirect_to current_user, notice: t('controllers.profile.not_your') unless @doctor_profile.user == current_user
-
-    @doctor_profile.destroy
-    redirect_to root_path, notice: t('controllers.users.destroyed')
-  end
-
   private
 
+  def update_profile_categorie
+    category = Category.find_by(name_ua: params[:doctor_profile][:categories])
+    doctor_profile = DoctorProfile.find(params[:id])
+    return unless category.present? && doctor_profile.present?
+
+    doctor_profile.categories << category unless doctor_profile.category_ids.include?(category.id)
+
+    doctor_profile.save!
+  end
+
   def doctor_profile_params
-    params.require(:doctor_profile).permit(:description)
+    params.require(:doctor_profile).permit(:description, category_ids: [])
   end
 end

@@ -1,32 +1,7 @@
-<p style="color: green"><%= notice %></p>
+<section style="background-color: #eee;">
+  <div class="container p-5">
+  <p style="color: green"><%= notice %></p>
 
-<table class="table">
-  <% if user_signed_in? %>
-  <thead>
-    <tr>
-    <% if current_user.doctor? %>
-      <th scope="col"><%= t("view.user.type.#{User::PATIENT}") %></th>
-    <% else %>
-      <th scope="col"><%= t("view.user.type.#{User::DOCTOR}") %></th>
-    <% end %>
-    <th scope="col"><%= t('view.user.username')%></th>
-    <th scope="col"><%= t('view.user.email')%></th>
-    <th scope="col"><%= t('view.user.phone_number')%></th>
-    </tr>
-  </thead>
-  <tbody>
-    
-    <% @users.each do |user| %>
-    <% unless user.type == current_user.type %>
-      <tr>
-      <td><%= render user  %></td>
-      <td><%= user.username  %></td>
-      <td><%= user.email  %></td>
-      <td><%= user.phone_number  %></td>
-      </tr>
-    <% end %>
-    <% end %>
-    
-  </tbody>
-  <% end %>
-</table>
+    </div>
+</section>
+

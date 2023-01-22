@@ -11,9 +11,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, notice: t('errors.doctor_only')
   end
 
-  def current_user_can_edit?(model)
-    
-    user_signed_in? && model.user == current_user
+  def check_patient!
+    return if current_user&.patient?
+
+    redirect_to root_path, notice: t('errors.patient_only')
   end
 
   def after_sign_in_path_for(resource)
