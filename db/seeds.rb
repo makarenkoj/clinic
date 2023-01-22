@@ -20,7 +20,8 @@ if Rails.env.development?
   puts 'Creating doctor'
 
   10.times do |i|
-    User.create!(email: "#{Faker::GreekPhilosophers.name}#{i}@mail.com", phone_number: "+38066784558#{i}", username: Faker::Games::Heroes.name, type: User::DOCTOR, password: password, password_confirmation: password)
+    doctor = User.create!(email: "#{Faker::GreekPhilosophers.name}#{i}@mail.com", phone_number: "+38066784558#{i}", username: Faker::Games::Heroes.name, type: User::DOCTOR, password: password, password_confirmation: password)
+    doctor.doctor_profile.categories << Category.all[i]
   end
 
   puts 'Creating patient'

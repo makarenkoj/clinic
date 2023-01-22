@@ -14,14 +14,20 @@ class DoctorsAppointmentsController < ApplicationController
   end
 
   def new
-    binding.break
-
-    @appointment = current_user.patient_profile.doctors_appointment.build
+    @appointment = current_user.patient_profile.doctors_appointments.build
+    @doctor = DoctorProfile.find_by(id: params[:doctor_id])
   end
 
   def create
-    binding.break
-    @appointment
+    user_doctor = User.doctor.find_by(username: params[:doctors_appointment][:doctor_profile])
+
+    redirect_to doctor_profiles_url, notice: t('errors.no_such_doctor') unless user_doctor&.doctor_profile.present?
+
+    appointment = DoctorsAppointment.new(visit_time: params[:doctors_appointment][:visit_time], doctor_profile: user_doctor&.doctor_profile, 
+                                         patient_profile: current_user.patient_profile)
+    appointment.save!
+
+    redirect_to current_user.patient_profile, notice: t('controllers.appointments.created')
   end
 
   def edit

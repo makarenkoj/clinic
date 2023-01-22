@@ -1,11 +1,7 @@
-<h1><%= t('view.appointments.edit')%></h1>
+<h1><%= t('view.appointments.new')%></h1>
 
 <div class="row">
   <div class="col-md-6 buffer-top">
-  <% if current_user.doctor? %>
-    <%= render 'doctor_form' %>
-  <% else %>
-    <%= render 'form' %>
-  <% end %>
+    <%= render 'new_form' %>
   </div>
 </div>

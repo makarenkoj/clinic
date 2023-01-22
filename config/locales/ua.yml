@@ -186,6 +186,10 @@ ua:
     patient_only: 'тільки пацієнт'
     not_your_appointment: 'це не ваше призначення'
     format: "%{attribute} %{message}"
+    doctor_only: 'Ви повинні мати роль лікаря, щоб отримати доступ до цієї сторінки'
+    no_such_doctor: 'такого лікаря немає'
+    invalid_visit_time: 'недійсний час відвідування'
+    choose_doctor: 'виберете лікаря'
     messages:
       accepted: має бути прийнятий
       blank: не може бути пустим
@@ -332,6 +336,7 @@ ua:
     appointments:
       updated: 'Ви оновили призначення'
       create: 'Завітати до лікаря'
+      created: 'Запис збережено'
   view:
     user:
       username: "ім'я користувача"
@@ -357,4 +362,5 @@ ua:
       edit: 'Редагувати запис до лікаря'
       visit_time: 'Дата та час відвідування'
       description: 'Опис'
+      new: 'Новий визіт'
     doctor_size: 'Кількість Лікарів'

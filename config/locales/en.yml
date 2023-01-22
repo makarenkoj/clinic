@@ -163,6 +163,9 @@ en:
     not_your_appointment: 'this is not your appointment'
     format: "%{attribute} %{message}"
     doctor_only: 'You should have doctor role to access this page'
+    no_such_doctor: 'there is no such doctor'
+    invalid_visit_time: 'invalid visit time'
+    choose_doctor: 'choose a doctor'
     messages:
       accepted: must be accepted
       blank: can't be blank
@@ -282,6 +285,7 @@ en:
     appointments:
       updated: 'You have updated the appointment'
       create: 'Create new doctor appointments'
+      created: 'Record saved'
   view:
     user:
       username: 'username'
@@ -307,4 +311,5 @@ en:
       edit: 'Edit doctor record'
       visit_time: 'Visit date & time'
       description: 'Description'
+      new: 'New appointment'
     doctor_size: 'Number of Doctors'

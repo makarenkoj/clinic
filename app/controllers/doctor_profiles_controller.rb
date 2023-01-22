@@ -16,7 +16,7 @@ class DoctorProfilesController < ApplicationController
   end
 
   def update
-    update_profile_categorie
+    update_profile_categories
 
     @doctor_profile = DoctorProfile.find(params[:id])
 
@@ -29,7 +29,7 @@ class DoctorProfilesController < ApplicationController
 
   private
 
-  def update_profile_categorie
+  def update_profile_categories
     category = Category.find_by(name_ua: params[:doctor_profile][:categories])
     doctor_profile = DoctorProfile.find(params[:id])
     return unless category.present? && doctor_profile.present?

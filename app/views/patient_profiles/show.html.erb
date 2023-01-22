@@ -50,10 +50,12 @@
                 <p class="text-muted mb-0"><%= link_to t('view.recomendacion'), appointment, class: 'btn btn-light' %></p>
               </div>
               <div class="col-sm-3">
-              <% if I18n.locale == :ua %>
-                <p class="text-muted mb-0"><%= link_to appointment.doctor_profile.categories.first.name_ua, appointment.doctor_profile.categories.first, class: 'btn btn-light' %></p>
-              <% else %>
-                <p class="text-muted mb-0"><%= link_to appointment.doctor_profile.categories.first.name_en, appointment.doctor_profile.categories.first, class: 'btn btn-light' %></p>
+              <% if appointment.doctor_profile.categories.present? %>
+                <% if I18n.locale == :ua %>
+                  <p class="text-muted mb-0"><%= link_to appointment.doctor_profile.categories.first&.name_ua, appointment.doctor_profile.categories.first, class: 'btn btn-light' %></p>
+                <% else %>
+                  <p class="text-muted mb-0"><%= link_to appointment.doctor_profile.categories.first&.name_en, appointment.doctor_profile.categories.first, class: 'btn btn-light' %></p>
+                <% end %>
               <% end %>
               </div>
               <div class="col-sm-3">
