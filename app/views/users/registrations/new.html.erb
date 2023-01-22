@@ -10,6 +10,12 @@
   <% end %>
 
   <div class="form-inputs">
+    <%= f.input :image, 
+                label: t('activerecord.attributes.user.avatar'),   
+                class: 'form-control mx-1', 
+                error_class: 'is-invalid', 
+                valid_class: 'is-valid' %>
+
     <%= f.input :type,
                 as: :select,
                 collection: User::TYPES.keys,
@@ -36,7 +42,6 @@
                 required: true,
                 input_html: { autocomplete: "new-password" } %>
   </div>
-
   <div class="form-actions">
     <%= f.button :submit, t('activerecord.attributes.user.sign_up'), class: "btn btn-large btn-danger", "data-disable-with" => "Submitting.."%>
   </div>

@@ -2,6 +2,12 @@
   <%= render partial: 'partials/form_errors', locals: {model: @user} %>
 
   <div class="form-group">
+    <%= f.input :image, 
+                label: t('activerecord.attributes.user.avatar'),   
+                class: 'form-control mx-1', 
+                error_class: 'is-invalid', 
+                valid_class: 'is-valid' %>
+
     <%= f.input :username, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid' %>
     <%= f.input :phone_number, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid' %>
     <%= f.input :email, class: 'form-control', error_class: 'is-invalid', valid_class: 'is-valid' %>
