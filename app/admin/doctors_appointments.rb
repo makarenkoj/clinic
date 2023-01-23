@@ -10,9 +10,7 @@ ActiveAdmin.register DoctorsAppointment do
     column :patient do |doctors_appointment|
       doctors_appointment.patient_profile.user.username
     end
-    column :description do |doctors_appointment|
-      doctors_appointment.description
-    end
+    column :description
     column :created_at
     actions
   end
