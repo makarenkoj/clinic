@@ -10,13 +10,13 @@ puts 'Create admin'
 
 AdminUser.create!(email: 'admin@example.com', password: password, password_confirmation: password) if Rails.env.development?
 
+puts 'Creating category'
+
+10.times do |_i|
+  Category.create!(name_ua: Faker::Job.title, name_en: Faker::Job.seniority)
+end
+
 if Rails.env.development?
-  puts 'Creating category'
-
-  10.times do |_i|
-    Category.create!(name_ua: Faker::Job.title, name_en: Faker::Job.seniority)
-  end
-
   puts 'Creating doctor'
 
   10.times do |i|
