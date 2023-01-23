@@ -12,8 +12,8 @@ AdminUser.create!(email: 'admin@example.com', password: password, password_confi
 
 puts 'Creating category'
 
-10.times do |_i|
-  Category.create!(name_ua: Faker::Job.title, name_en: Faker::Job.seniority)
+10.times do |i|
+  Category.create!(name_ua: "#{i}_name", name_en: "name_#{i}")
 end
 
 if Rails.env.development?

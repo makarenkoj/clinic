@@ -18,12 +18,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    admin_dashboard_path if resource.email == 'admin@example.com' # if the user is admin, TO-DO transfer to ENV 
-
-    if resource&.doctor?
-      doctor_profile_url(resource.doctor_profile)
+    case resource[:type]
+    when User::DOCTOR
+      doctor_profile_url(resource&.doctor_profile)
+    when User::PATIENT
+      patient_profile_url(resource&.patient_profile)
     else
-      patient_profile_path(resource.patient_profile)
+      super
     end
   end
 

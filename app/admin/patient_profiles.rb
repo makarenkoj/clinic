@@ -48,7 +48,7 @@ ActiveAdmin.register PatientProfile do
 
           patient_profile.doctors_appointments.each do |da|
             div class: 'appointments' do
-              "date time: #{ date_format(da.visit_time)} /doctor: #{da.doctor_profile.user.username} /description: #{da.description}"
+              "date time: #{date_format(da.visit_time)} /doctor: #{da.doctor_profile.user.username} /description: #{da.description}"
             end
           end
         end
