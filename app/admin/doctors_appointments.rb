@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 ActiveAdmin.register DoctorsAppointment do
   actions :all
 
@@ -34,3 +35,4 @@ ActiveAdmin.register DoctorsAppointment do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

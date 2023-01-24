@@ -86,6 +86,6 @@
 #   password: <%= ENV["CLINIC_DATABASE_PASSWORD"] %>
 
 development:
-  url: 'postgres://postgres:123456@localhost:4444/clinic_development?encoding=utf8&pool=50&timeout=5000'
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_development?' ) %>
 test:
-  url: 'postgres://postgres:123456@localhost:4444/clinic_test?encoding=utf8&pool=50&timeout=5000'
+  url: <%= ENV['DATABASE_URL'].gsub('?', '_test?' ) %>
