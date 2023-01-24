@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 ActiveAdmin.register PatientProfile do
   actions :all
 
@@ -56,3 +57,4 @@ ActiveAdmin.register PatientProfile do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

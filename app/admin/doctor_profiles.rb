@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 ActiveAdmin.register DoctorProfile do
   actions :all
 
@@ -56,3 +57,4 @@ ActiveAdmin.register DoctorProfile do
   filter :user_username, as: :string
   filter :user_phone_number, as: :numeric
 end
+# rubocop:enable Metrics/BlockLength

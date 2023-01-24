@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 ActiveAdmin.register Category do
   actions :all
 
@@ -38,3 +39,4 @@ ActiveAdmin.register Category do
     end
   end
 end
+# rubocop:enable Metrics/BlockLength

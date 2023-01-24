@@ -34,6 +34,8 @@ class DoctorsAppointmentsController < ApplicationController
     @appointment = DoctorsAppointment.find(params[:id])
   end
 
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def update
     @appointment = DoctorsAppointment.find(params[:id])
 
@@ -47,6 +49,8 @@ class DoctorsAppointmentsController < ApplicationController
       render :edit
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 
   private
 
