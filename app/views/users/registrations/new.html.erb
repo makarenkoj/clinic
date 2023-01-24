@@ -10,12 +10,6 @@
   <% end %>
 
   <div class="form-inputs">
-    <%= f.input :image, 
-                label: t('activerecord.attributes.user.avatar'),
-                class: 'form-control mx-1', 
-                error_class: 'is-invalid', 
-                valid_class: 'is-valid' %>
-
     <%= f.input :type,
                 as: :select,
                 label: t('activerecord.attributes.user.user_type'),

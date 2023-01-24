@@ -43,9 +43,9 @@ en:
         cancel_account: 'Cancel my account'
         unhappy: 'Unhappy?'
         delete_profile_confirm: 'Are you sure?'
-        phone_number: 'phone number +380'
-        user_type: 'user type'
-        username: 'username'
+        phone_number: 'Phone number +380'
+        user_type: 'Choose user type'
+        username: 'Username'
       doctor_profile:
         save: 'Save'
         back: 'Back'
