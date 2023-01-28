@@ -27,6 +27,9 @@ ua:
         avatar: 'Аватарочка'
         password: 'Пароль'
         password_confirmation: 'Підтвердження пароля'
+        current_password: 'Поточний пароль'
+        forgot_your_password: 'Забули свій пароль?'
+        reset_password: 'Надіслати мені інструкції щодо зміни пароля'
         sign_in: 'Увійти'
         sign_out: 'Вийти'
         sign_up: 'Зареєструватись'
@@ -46,6 +49,8 @@ ua:
         phone_number: 'Номер телефону +380'
         user_type: 'Виберіть тип користувача'
         username: "Ім'я користувача"
+        login: "Ім'я користувача, електронна пошта або номер телефону"
+        remember_me: "Запам'ятати мене"
       doctor_profile:
         save: 'Зберегти'
         back: 'Повернуться'

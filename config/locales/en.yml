@@ -27,6 +27,9 @@ en:
         avatar: 'Avatar'
         password: 'Password'
         password_confirmation: 'Password Confirmation'
+        current_password: 'Current password'
+        forgot_your_password: 'Forgot your password?'
+        reset_password: 'Send me reset password instructions'
         sign_in: 'Sign in'
         sign_out: 'Sign out'
         sign_up: 'Sign up'
@@ -46,6 +49,8 @@ en:
         phone_number: 'Phone number +380'
         user_type: 'Choose user type'
         username: 'Username'
+        login: 'Username, email or phone number'
+        remember_me: 'Remember me'
       doctor_profile:
         save: 'Save'
         back: 'Back'
