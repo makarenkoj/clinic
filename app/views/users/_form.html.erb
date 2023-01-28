@@ -1,5 +1,5 @@
-<%= simple_form_for @user, html: {multipart: true}, wrappers: :horizontal_multi_select do |f| %>
-  <%= render partial: 'partials/form_errors', locals: {model: @user} %>
+<%= simple_form_for @user, html: {multipart: true}, data: { turbo: false }, wrappers: :horizontal_multi_select do |f| %>
+  <%# <%= render partial: 'partials/form_errors', locals: {model: @user} %>
 
   <div class="form-group">
     <%= f.input :image, 

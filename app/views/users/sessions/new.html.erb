@@ -1,9 +1,12 @@
 <h2><%= t('activerecord.attributes.user.log_in') %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
+  <%= f.error_notification %>
+  <%= render "users/shared/error_messages", resource: resource %>
+
   <div class="form-inputs">
     <%= f.input :login,
+                label: t('activerecord.attributes.user.login'),
                 required: true,
                 autofocus: true %>
     <%= f.input :password,

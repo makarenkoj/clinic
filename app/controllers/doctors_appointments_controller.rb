@@ -2,6 +2,7 @@ class DoctorsAppointmentsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    # TODO
   end
 
   def show
@@ -19,12 +20,13 @@ class DoctorsAppointmentsController < ApplicationController
   end
 
   def create
-    user_doctor = User.doctor.find_by(username: params[:doctors_appointment][:doctor_profile].downcase)
+    user_doctor = User.doctor.find_by(username: params[:doctors_appointment][:doctor_profile].downcase) # Username
 
-    redirect_to doctor_profiles_url, notice: t('errors.no_such_doctor') unless user_doctor&.doctor_profile.present?
+    return redirect_to doctor_profiles_url, notice: t('errors.no_such_doctor') unless user_doctor&.doctor_profile.present?
 
-    appointment = DoctorsAppointment.new(visit_time: params[:doctors_appointment][:visit_time], doctor_profile: user_doctor&.doctor_profile, 
-                                         patient_profile: current_user.patient_profile)
+    properties = doctors_appointment_params.merge(doctor_profile: user_doctor&.doctor_profile, patient_profile: current_user.patient_profile)
+
+    appointment = DoctorsAppointment.new(properties)
     appointment.save!
 
     redirect_to current_user.patient_profile, notice: t('controllers.appointments.created')
