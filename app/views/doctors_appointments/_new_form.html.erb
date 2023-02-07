@@ -1,4 +1,4 @@
-<%= simple_form_for @appointment, html: {multipart: true}, wrapper: :vertical_multi_select do |f| %>
+<%= simple_form_for @appointment, html: {multipart: true}, data: { turbo: false }, wrapper: :vertical_multi_select do |f| %>
   <%= render partial: 'partials/form_errors', locals: {model: @appointment} %>
 
   <div class="form-group">
@@ -8,6 +8,8 @@
                 collection: @doctor.present? ? @doctor.user.username.humanize.split : DoctorProfile.all.map { |doc| doc.user.username.humanize },
                 required: true,
                 autofocus: true,
+                error_class: 'is-invalid', 
+                valid_class: 'is-valid',
                 input_html: { autocomplete: 'username' }%>
 
     <%= f.input :visit_time,
@@ -16,6 +18,8 @@
       class: "form-control form-control-lg",
       input_html: {value: params[:start_date]},
       wrapper_html: { class: 'mb-3' },
+      error_class: 'is-invalid', 
+      valid_class: 'is-valid',
       html5: true %>
   </div>
   <div class="actions">

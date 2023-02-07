@@ -27,9 +27,12 @@ class DoctorsAppointmentsController < ApplicationController
     properties = doctors_appointment_params.merge(doctor_profile: user_doctor&.doctor_profile, patient_profile: current_user.patient_profile)
 
     appointment = DoctorsAppointment.new(properties)
-    appointment.save!
 
-    redirect_to current_user.patient_profile, notice: t('controllers.appointments.created')
+    if appointment.save
+      redirect_to current_user.patient_profile, notice: t('controllers.appointments.created')
+    else
+      redirect_to new_doctors_appointment_url, notice: errors_message_html(appointment.errors)
+    end
   end
 
   def edit

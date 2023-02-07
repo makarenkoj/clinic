@@ -18,6 +18,11 @@ en:
             email:
               invalid: 'Invalid email'
               taken: 'User with this email already exists'
+        appointment:
+          attributes:
+            visit_time: 'Visit time must be greater than the current date'
+            time_busy: 'This time %{time} is not available'
+            day_busy: 'This day %{day} is busy, make an appointment for the next one'
     attributes:
       patients: 'Patients'
       doctors: 'Doctors'
