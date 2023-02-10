@@ -28,6 +28,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def errors_message_html(error)
+    error.messages.map { |_k, v| v }.join('<br>').html_safe
+  end
+
   private
 
   def switch_locale(&action)

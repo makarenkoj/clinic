@@ -11,6 +11,32 @@ RSpec.describe DoctorsAppointment, type: :model do
   end
   
   describe 'validation' do
-    it { should validate_presence_of(:visit_time) }
+    context 'validation visit time' do
+      it { should validate_presence_of(:visit_time) }
+
+      it 'visit time valid' do
+        expect(create(:doctors_appointment, visit_time: Time.current + 1.days)).to be_valid
+      end
+
+      it 'visit time invalid' do
+        expect do 
+          create(:doctors_appointment, visit_time: Time.current)
+        end.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Visit time Visit time must be greater than the current date')
+      end
+    end
+
+    context 'validation doctors' do
+      let!(:doctor) { create(:doctor_profile) }
+
+      it 'visit time valid' do
+        expect(create(:doctors_appointment, visit_time: Time.current + 1.days)).to be_valid
+      end
+
+      it 'should return Visit time must be greater than' do
+        expect do 
+          create(:doctors_appointment, visit_time: Time.current)
+        end.to raise_error(ActiveRecord::RecordInvalid, 'Validation failed: Visit time Visit time must be greater than the current date')
+      end
+    end
   end
 end
