@@ -1,0 +1,10 @@
+<div class="d-flex align-items-center justify-content-center vh-100">
+  <div class="text-center">
+    <%= image_tag "#{response.status}.png", class: "rounded mx-auto d-block", width: "350px" %>
+    <h1 class="display-1 fw-bold"><%= response.status %> <%= action_name.humanize %></h1>
+    <p class="fs-3"> <span class="text-danger">Opps!</span></p>
+    <p class="lead">
+    </p>
+    <%=link_to 'Go Home', root_url, class: "btn btn-primary" %>
+  </div>
+</div>
