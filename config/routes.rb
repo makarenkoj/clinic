@@ -15,5 +15,7 @@ Rails.application.routes.draw do
     resources :doctors_appointments
 
     root 'users#index'
+
+    get 'set_theme', to: 'theme#update'
   end
 end

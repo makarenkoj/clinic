@@ -326,3 +326,8 @@ en:
       description: 'Description'
       new: 'New appointment'
     doctor_size: 'Number of Doctors'
+  message:
+    sms:
+      new_appointment: 
+        patient: 'Booked a new visit to Dr. %{name} %{categories} at %{visit_time}'
+        doctor: 'A new appointment is booked for you on %{visit_time}, booked by %{name}'

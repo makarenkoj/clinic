@@ -57,6 +57,7 @@ gem 'jquery-rails'
 gem 'phonelib'
 gem 'sassc-rails'
 gem 'simple_form'
+gem 'twilio-ruby', '~> 5.74.5'
 
 group :development, :test do
   gem 'capybara'

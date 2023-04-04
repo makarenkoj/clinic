@@ -19,17 +19,31 @@ class DoctorsAppointmentsController < ApplicationController
     @doctor = DoctorProfile.find_by(id: params[:doctor_id])
   end
 
+  # rubocop:disable Metrics/AbcSize
   def create
     user_doctor = User.doctor.find_by(username: params[:doctors_appointment][:doctor_profile].downcase) # Username
 
     return redirect_to doctor_profiles_url, notice: t('errors.no_such_doctor') unless user_doctor&.doctor_profile.present?
 
     properties = doctors_appointment_params.merge(doctor_profile: user_doctor&.doctor_profile, patient_profile: current_user.patient_profile)
-
     appointment = DoctorsAppointment.new(properties)
 
     if appointment.save
+      visit_time = properties[:visit_time].to_datetime.strftime('%H:%M %d/%m/%Y')
+
+      Twilio::SmsService.new(body: I18n.t('message.sms.new_appointment.doctor',
+                                          visit_time: visit_time, 
+                                          name: current_user.username.titleize),
+                             to_phone_number: user_doctor.phone_number).call
+
+      Twilio::SmsService.new(body: I18n.t('message.sms.new_appointment.patient',
+                                          visit_time: visit_time, 
+                                          name: user_doctor.username.titleize, 
+                                          categories: user_doctor.doctor_profile.categories.last),
+                             to_phone_number: current_user.phone_number).call
+
       redirect_to current_user.patient_profile, notice: t('controllers.appointments.created')
+
     else
       redirect_to new_doctors_appointment_url, notice: errors_message_html(appointment.errors)
     end
@@ -38,6 +52,7 @@ class DoctorsAppointmentsController < ApplicationController
   def edit
     @appointment = DoctorsAppointment.find(params[:id])
   end
+  # rubocop:enable Metrics/AbcSize
 
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/PerceivedComplexity
