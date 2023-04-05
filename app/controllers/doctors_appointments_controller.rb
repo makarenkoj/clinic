@@ -29,6 +29,7 @@ class DoctorsAppointmentsController < ApplicationController
     appointment = DoctorsAppointment.new(properties)
 
     if appointment.save
+      # add transaction
       visit_time = properties[:visit_time].to_datetime.strftime('%H:%M %d/%m/%Y')
 
       Twilio::SmsService.new(body: I18n.t('message.sms.new_appointment.doctor',
@@ -39,7 +40,7 @@ class DoctorsAppointmentsController < ApplicationController
       Twilio::SmsService.new(body: I18n.t('message.sms.new_appointment.patient',
                                           visit_time: visit_time, 
                                           name: user_doctor.username.titleize, 
-                                          categories: user_doctor.doctor_profile.categories.last),
+                                          categories: user_doctor.doctor_profile.categories.last.name_en),
                              to_phone_number: current_user.phone_number).call
 
       redirect_to current_user.patient_profile, notice: t('controllers.appointments.created')
