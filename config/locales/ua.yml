@@ -377,3 +377,8 @@ ua:
       description: 'Опис'
       new: 'Новий визіт'
     doctor_size: 'Кількість Лікарів'
+  message:
+    sms:
+      new_appointment: 
+        patient: 'Заброньован новий визіт к доктору %{name} %{categories} на %{visit_time}.'
+        doctor: 'До вас заброньован новий визіт %{visit_time} , забронював %{name}.'
