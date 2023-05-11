@@ -89,7 +89,7 @@
                                     <td align="center" style="color: #ffffff; font-size: 14px; font-family: 'Work Sans', Calibri, sans-serif; line-height: 26px;">
                                         <div style="line-height: 26px;">
                                         <%# add route to appointment %>
-                                            <a href="" style="color: #ffffff; text-decoration: none;">
+                                            <a href="<%= Routes::AppointmentRoutes.appointment_url(@appointment.id) %>" style="color: #ffffff; text-decoration: none;">
                                             <%= I18n.t('mailers.doctor_new_appointment_email.link') %>
                                             </a>
                                         </div>
