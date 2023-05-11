@@ -30,20 +30,24 @@ class DoctorsAppointmentsController < ApplicationController
 
     if appointment.save
       # add transaction
-      visit_time = properties[:visit_time].to_datetime.strftime('%H:%M %d/%m/%Y')
+      ActiveRecord::Base.transaction do
+        visit_time = properties[:visit_time].to_datetime.strftime('%H:%M %d/%m/%Y')
 
-      Twilio::SmsService.new(body: I18n.t('message.sms.new_appointment.doctor',
-                                          visit_time: visit_time, 
-                                          name: current_user.username.titleize),
-                             to_phone_number: user_doctor.phone_number).call
+        Twilio::SmsService.new(body: I18n.t('message.sms.new_appointment.doctor',
+                                            visit_time: visit_time, 
+                                            name: current_user.username.titleize),
+                               to_phone_number: user_doctor.phone_number).call
 
-      Twilio::SmsService.new(body: I18n.t('message.sms.new_appointment.patient',
-                                          visit_time: visit_time, 
-                                          name: user_doctor.username.titleize, 
-                                          categories: user_doctor.doctor_profile.categories.last.name_en),
-                             to_phone_number: current_user.phone_number).call
+        Twilio::SmsService.new(body: I18n.t('message.sms.new_appointment.patient',
+                                            visit_time: visit_time, 
+                                            name: user_doctor.username.titleize, 
+                                            categories: user_doctor.doctor_profile.categories.last&.name_en),
+                               to_phone_number: current_user.phone_number).call
 
-      redirect_to current_user.patient_profile, notice: t('controllers.appointments.created')
+        Notifications::Email.send_new_appointment_email(appointment_id: appointment.id)
+
+        redirect_to current_user.patient_profile, notice: t('controllers.appointments.created')
+      end
 
     else
       redirect_to new_doctors_appointment_url, notice: errors_message_html(appointment.errors)
