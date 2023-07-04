@@ -331,3 +331,17 @@ en:
       new_appointment: 
         patient: 'Booked a new visit to Dr. %{name} %{categories} at %{visit_time}'
         doctor: 'A new appointment is booked for you on %{visit_time}, booked by %{name}'
+  mailers:
+    subjects:
+      patient_new_appointment_email: 'A visit to the doctor'
+      doctor_new_appointment_email: 'A visit to the doctor'
+    patient_new_appointment_email:
+      title: 'Hello '
+      body: 'Booked a new visit to doctor %{doctor_name} %{categories} at %{visit_time}.'
+    doctor_new_appointment_email:
+      title: 'Hello '
+      body: 'A new appointment is booked for you on %{visit_time}, booked by %{patient_name}'
+      link: 'View visit'
+    email: 'clinic@mail.com'
+    subscribe: 'subscribe'
+    unsubscribe: 'unsubscribe'

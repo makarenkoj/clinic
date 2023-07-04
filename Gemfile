@@ -67,6 +67,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'ffaker'
+  gem 'mailcatcher'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 5.0.1'
   gem 'selenium-webdriver'
