@@ -371,6 +371,7 @@ ua:
     make_an_appointment: 'Записатися на прийом'
     doctors: 'Лікарі'
     patients: 'Пацієнти'
+    doctors_search: 'Пошук лікарів'
     appointments:
       edit: 'Редагувати запис до лікаря'
       visit_time: 'Дата та час відвідування'
