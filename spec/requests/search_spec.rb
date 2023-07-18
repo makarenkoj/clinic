@@ -38,9 +38,8 @@ RSpec.describe '/search', type: :request do
     it 'renders a successful response' do
       sign_in current_user
       doctor = create(:user, :doctor_type)
-      params = { search: doctor.username }
 
-      post '/search/search', params: params
+      post '/search/search', params: { search: { search: doctor.username } }
 
       expect(response).to have_http_status(:ok)
       expect(current_user.present?).to be true

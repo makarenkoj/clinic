@@ -5,7 +5,7 @@ class SearchController < ApplicationController
   end
 
   def search
-    @results = SearchService.call(search: params[:search]&.downcase)
+    @results = params[:search].present? ? SearchService.call(search: params[:search][:search]&.downcase) : nil
 
     render turbo_stream:
       turbo_stream.update('results',
