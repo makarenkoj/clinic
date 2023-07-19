@@ -320,7 +320,8 @@ en:
     make_an_appointment: 'Make an appointment'
     doctors: 'Doctors'
     patients: 'Patients'
-    doctors_search: 'Doctors search'
+    search_search: 'Doctors search'
+    categories_search: 'Categories search'
     appointments:
       edit: 'Edit doctor record'
       visit_time: 'Visit date & time'

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :search, only: [:index] do
       collection do
         post :search
+        post :search_categories
       end
     end
 

@@ -18,7 +18,6 @@ RSpec.describe '/search', type: :request do
     end
 
     it 'redirect to login' do
-
       get '/search'
 
       expect(response).to have_http_status(:found)
@@ -51,6 +50,39 @@ RSpec.describe '/search', type: :request do
       params = { search: doctor.username }
 
       post '/search/search', params: params
+
+      expect(response).to have_http_status(:found)
+    end
+  end
+
+  describe 'POST /search/search_categories' do
+    it 'renders a successful response' do
+      sign_in current_user
+
+      post '/search/search_categories'
+
+      expect(response).to have_http_status(:ok)
+      expect(current_user.present?).to be true
+      expect(assigns(:results)).to eql nil
+    end
+
+    it 'return result' do
+      sign_in current_user
+      category = create(:category)
+      create_list(:category, 3)
+
+      post '/search/search_categories', params: { search: { search: category.name_ua } }
+
+      expect(response).to have_http_status(:ok)
+      expect(current_user.present?).to be true
+      expect(assigns(:results)[0]).to eq(category)
+    end
+
+    it 'not login user' do
+      category = create(:category)
+      create_list(:category, 3)
+
+      post '/search/search_categories', params: { search: { search: category.name_ua } }
 
       expect(response).to have_http_status(:found)
     end

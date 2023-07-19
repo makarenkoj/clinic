@@ -30,6 +30,6 @@ describe SearchService do
   end
 
   it 'should return nil' do
-    expect(SearchService.call().size).to eql 0
+    expect(SearchService.call.size).to eql 0
   end
 end
