@@ -22,6 +22,8 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many_attached :pictures
 
+  has_many :pixels
+
   enum type: TYPES
 
   validates :email, presence: true, uniqueness: true
@@ -46,6 +48,13 @@ class User < ApplicationRecord
     elsif conditions.key?(:username) || conditions.key?(:email) || conditions.key?(:phone_number)
       where(conditions.to_h).first
     end
+  end
+
+  def get_last_pixel_color
+    # guard clause, return white if no pixels
+    return 'white' if self.pixels.empty?
+
+    self.pixels.last.color 
   end
 
   private

@@ -1,0 +1,28 @@
+<section class="vh-10" style="background-color: <%= cookies[:theme] %>;">
+<div class="container shadow min-vh-100 py-4 ">
+    <div data-controller="pixels">
+        <div class="input-group mb-3">
+            <input  id="color" 
+                type="text" 
+                data-pixels-target="color" 
+                data-action="change->pixels#loadColor" 
+                value="<%= current_user.get_last_pixel_color %>"
+                class="form-control" 
+                placeholder="Recipient's username" 
+                aria-label="Recipient's username" 
+                aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button type="button" class="btn btn-outline-secondary"><%= t('pages.secret.choose_collor')%></button>
+            </div>
+        </div>
+
+        <canvas id="background" 
+            data-pixels-target="background" 
+            style="position:absolute;"></canvas>
+        <canvas id="preview" 
+            data-pixels-target="canvas" 
+            data-action="click->pixels#placePixel mousemove->pixels#mouseMove" 
+            style="position:absolute;"></canvas>
+    </div>
+</div>
+</section>

@@ -345,3 +345,6 @@ en:
     email: 'clinic@mail.com'
     subscribe: 'subscribe'
     unsubscribe: 'unsubscribe'
+  pages:
+    secret:
+      choose_collor: 'Choose color'

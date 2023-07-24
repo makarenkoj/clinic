@@ -396,3 +396,6 @@ ua:
     email: 'clinic@mail.com'
     subscribe: 'подпісітися'
     unsubscribe: 'відписатися'
+  pages:
+    secret:
+      choose_collor: 'Оберіть колір'
