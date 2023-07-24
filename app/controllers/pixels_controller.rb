@@ -1,5 +1,5 @@
 class PixelsController < ApplicationController
-  before_action :authenticate_user!, only: %i[create update]
+  before_action :authenticate_user!, only: %i[create update delete_all delete_last]
 
   def index
     @pixels = Pixel.all
@@ -26,9 +26,26 @@ class PixelsController < ApplicationController
     end
   end
 
+  def delete_all
+    pixels = current_user.pixels
+
+    ActiveRecord::Base.transaction do
+      pixels.each(&:destroy)
+    end
+
+    redirect_to pages_space_path, notice: t('pages.secret.clear')
+  end
+
+  def delete_last
+    pixel = current_user.pixels.last
+
+    pixel.destroy
+
+    redirect_to pages_space_path, notice: t('pages.secret.last')
+  end
+
   private 
 
-    
   def pixel_params
     params.require(:pixel).permit(:x, :y, :color)
   end

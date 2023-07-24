@@ -52,9 +52,9 @@ class User < ApplicationRecord
 
   def get_last_pixel_color
     # guard clause, return white if no pixels
-    return 'white' if self.pixels.empty?
+    return 'white' if pixels.empty?
 
-    self.pixels.last.color 
+    pixels.last.color 
   end
 
   private

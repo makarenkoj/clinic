@@ -348,3 +348,7 @@ en:
   pages:
     secret:
       choose_collor: 'Choose color'
+      clear: 'Space is clear'
+      button: 'Clear'
+      button_last: 'Remove last'
+      last: 'Removed'

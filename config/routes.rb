@@ -13,7 +13,12 @@ Rails.application.routes.draw do
     resources :patient_profiles
     resources :categories
     resources :doctors_appointments
-    resources :pixels, only: %i[create update index]
+    resources :pixels, only: %i[create update index] do
+      collection do
+        put :delete_all
+        put :delete_last
+      end
+    end
 
     root 'users#index'
 

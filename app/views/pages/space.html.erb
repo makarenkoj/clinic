@@ -13,6 +13,12 @@
                 aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <button type="button" class="btn btn-outline-secondary"><%= t('pages.secret.choose_collor')%></button>
+                <%= link_to t('pages.secret.button'), delete_all_pixels_path,
+                                                    data: { turbo_method: :put, turbo_confirm: t('activerecord.attributes.user.delete_profile_confirm') },
+                                                    class: 'btn btn-danger' %>
+                <%= link_to t('pages.secret.button_last'), delete_last_pixels_path,
+                                                    data: { turbo_method: :put },
+                                                    class: 'btn btn-outline-secondary' %>
             </div>
         </div>
 
