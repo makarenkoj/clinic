@@ -1,0 +1,50 @@
+env:
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_USER: postgres
+  POSTGRES_HOST: localhost
+  RAILS_ENV: test
+
+name: CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        ruby: ['3.1.2']
+    services:
+      db:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+      - name: Build and run tests
+        env:
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
+          RAILS_ENV: test
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          bundle install --jobs 4 --retry 3
+          bundle exec rake db:setup
+          bundle exec rubocop
+          bundle exec rspec
