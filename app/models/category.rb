@@ -1,4 +1,6 @@
 class Category < ApplicationRecord
+  # searchkick
+
   has_many :categories_doctors, dependent: :restrict_with_error
   has_many :doctor_profiles, through: :categories_doctors
 

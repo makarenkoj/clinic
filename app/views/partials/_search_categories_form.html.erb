@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-md-5 mx-auto">
+        <h3 class="text-muted mb-1"><%= t("view.#{params[:controller]}_search")%>: </h3>
+        <%= simple_form_for :search, url: search_categories_search_index_path, method: :post do |f| %>
+        <div class="input-group">
+          <%= f.input :search, label: false, input_html: {class: "form-control border-end-0 border rounded-pill"} %>
+          <span class="input-group-append">
+          <%= f.submit "🔍", class: "btn btn-outline-secondary bg-#{cookies[:theme]} border-bottom-0 border rounded-pill ms-n5" %>
+          <i class="fa fa-search"></i>
+          </span>
+        </div>
+        <% end %>
+    </div>
+</div>

@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'faker'
 require 'active_record'
 require 'factory_bot_rails'
+require 'capybara/rspec'
 
 # Add additional requires below this line. Rails is not loaded until this point!
 
@@ -48,6 +49,8 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include RSpec::Rails::RequestExampleGroup, type: :request, file_path: %r{spec/api}
   config.include RequestSpecHelper
+
+  Capybara.default_driver = :selenium
 
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
