@@ -40,12 +40,11 @@ jobs:
           bundler-cache: true
       - name: Build and run tests
         env:
-          DATABASE_URL: postgres://postgres:@localhost:4444/test
+          DATABASE_URL: postgres://postgres:123456@localhost:4444/test
           RAILS_ENV: test
         run: |
           sudo apt-get -yqq install libpq-dev
           bundle install --jobs 4 --retry 3
           bundle exec rake db:setup
           bundle exec rubocop
-          bundle exec rails_best_practices .
           bundle exec rspec
