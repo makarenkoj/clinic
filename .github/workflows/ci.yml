@@ -22,8 +22,8 @@ jobs:
         image: postgres:latest
         env:
           POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: '123456'
-        ports: ['4444:4444']
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -40,7 +40,7 @@ jobs:
           bundler-cache: true
       - name: Build and run tests
         env:
-          DATABASE_URL: postgres://postgres:123456@localhost:4444/test
+          DATABASE_URL: postgres://postgres:@localhost:5432/test
           RAILS_ENV: test
         run: |
           sudo apt-get -yqq install libpq-dev
