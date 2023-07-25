@@ -50,12 +50,14 @@ class User < ApplicationRecord
     end
   end
 
+  # rubocop:disable Naming/AccessorMethodName
   def get_last_pixel_color
     # guard clause, return white if no pixels
     return 'white' if pixels.empty?
 
     pixels.last.color 
   end
+  # rubocop:enable Naming/AccessorMethodName
 
   private
 

@@ -25,7 +25,6 @@ Rails.application.routes.draw do
       collection do
         post :search
         post :search_categories
-
       end
     end
 
