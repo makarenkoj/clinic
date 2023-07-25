@@ -20,7 +20,7 @@ Rails.application.routes.draw do
         put :delete_last
       end
     end
- 
+
     resources :search, only: [:index] do
       collection do
         post :search
