@@ -3,7 +3,7 @@ module QueryNormalizer
   # @param [String] search
   def self.remove_special_symbols(search)
     # regexp = /[\]\[\}\{!\\<\|>,\"#&*+?`$)(^%~\':;№=]/
-    regexp = /[\]\[}{!\\<|>,\"#&*+?`$)(^%~':;№=]/
+    regexp = /[\]\[}{!\\<|>,"#&*+?`$)(^%~':;№=]/
 
     search&.gsub(regexp, '')
   end
