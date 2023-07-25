@@ -40,7 +40,7 @@ jobs:
           bundler-cache: true
       - name: Build and run tests
         env:
-          DATABASE_URL: postgres://postgres:@localhost:5432/test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
           RAILS_ENV: test
         run: |
           sudo apt-get -yqq install libpq-dev
