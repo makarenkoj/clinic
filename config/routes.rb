@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     resources :patient_profiles
     resources :categories
     resources :doctors_appointments
+    resources :search, only: [:index] do
+      collection do
+        post :search
+        post :search_categories
+      end
+    end
 
     root 'users#index'
 

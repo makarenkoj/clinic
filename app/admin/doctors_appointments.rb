@@ -24,10 +24,10 @@ ActiveAdmin.register DoctorsAppointment do
   show do
     attributes_table do
       row :id
-      column :doctor do |doctors_appointment|
+      row :doctor do |doctors_appointment|
         doctors_appointment.doctor_profile.user.username
       end
-      column :patient do |doctors_appointment|
+      row :patient do |doctors_appointment|
         doctors_appointment.patient_profile.user.username
       end
       row :description

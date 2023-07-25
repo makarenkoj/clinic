@@ -1,0 +1,22 @@
+<table class="table table-light">
+    <thead>
+        <tr>
+            <th scope="col"><%= t('view.categories.categories') %></th>
+            <th scope="col"><%= t('view.doctor_size') %></th>
+        </tr>
+    </thead>
+    <tbody>
+      <% categories&.each do |category| %>
+        <tr>
+          <% if I18n.locale  == :ua %>
+            <td><%= link_to category.name_ua.humanize, category, class: 'btn btn-light' %></td>
+          <% else %>
+            <td><%= link_to category.name_en.humanize, category, class: 'btn btn-light' %></td>
+          <% end %>
+            <td>
+              <%= link_to category.doctor_profiles.size, category, class: 'btn btn-light' %>
+            </td>
+        </tr>
+          <% end %>    
+    </tbody>
+</table>

@@ -53,11 +53,14 @@ gem 'aws-sdk', '~> 2'
 gem 'bootstrap'
 gem 'cancancan'
 gem 'devise'
+# gem 'elasticsearch', '~> 8'
 gem 'jquery-rails'
 gem 'phonelib'
 gem 'sassc-rails'
 gem 'simple_form'
 gem 'twilio-ruby', '~> 5.74.5'
+# gem "searchkick"
+# gem "opensearch-ruby"
 
 group :development, :test do
   gem 'capybara'

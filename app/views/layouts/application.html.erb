@@ -98,7 +98,16 @@
             </ul>
           </div>
         <% end %>
-        
+
+        <%# search %>
+        <div class="navbar-brand">
+          <div class="lokale">
+          <i class="fas fa-search">
+            <%= link_to  "🔍", search_index_path, class: 'btn btn-dark' %>
+          </i>
+          </div>
+        </div>
+
         <div class="navbar-brand">
           <div class="lokale">
             <a><%= link_to emoji_flag("gb"), root_path(locale: :en), class: 'btn swich' %></a>
