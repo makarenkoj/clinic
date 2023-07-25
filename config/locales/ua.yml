@@ -398,3 +398,10 @@ ua:
     email: 'clinic@mail.com'
     subscribe: 'подпісітися'
     unsubscribe: 'відписатися'
+  pages:
+    secret:
+      choose_collor: 'Оберіть колір'
+      clear: 'Простір очіщено'
+      button: 'Очистити'
+      button_last: 'Видалити останне'
+      last: 'Видален'

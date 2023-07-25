@@ -13,15 +13,25 @@ Rails.application.routes.draw do
     resources :patient_profiles
     resources :categories
     resources :doctors_appointments
+
+    resources :pixels, only: %i[create update index] do
+      collection do
+        put :delete_all
+        put :delete_last
+      end
+    end
+ 
     resources :search, only: [:index] do
       collection do
         post :search
         post :search_categories
+
       end
     end
 
     root 'users#index'
 
     get 'set_theme', to: 'theme#update'
+    get 'pages/space'
   end
 end
