@@ -16,7 +16,8 @@ module Twilio
         body: @body,     
         to: to(@to_phone_number),
         from: TWILIO_FROM_PHONE
-      )  # Magic Number for creating SMS
+        # from: '+15856011494'
+      ) # Magic Number for creating SMS
       
       
       # Twilio::SmsService.new(body: 'Hello its me',to_phone_number: '+15856011494').call
