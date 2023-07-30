@@ -388,6 +388,7 @@ ua:
     subjects:
       patient_new_appointment_email: 'Визіт до доктора'
       doctor_new_appointment_email: 'Визіт до доктора'
+      remaind_appointment_email: 'Нагадування про відвідування'
     patient_new_appointment_email:
       title: 'Вітаю '
       body: 'Заброньован новий визіт к доктору %{doctor_name} %{categories} на %{visit_time}.'
@@ -395,6 +396,7 @@ ua:
       title: 'Вітаю '
       body: 'До вас заброньован новий визіт %{visit_time} , забронював %{patient_name}.'
       link: 'Подивитись визіт'
+    remaind_appointment_email: "Це ненав'язливе нагадування."
     email: 'clinic@mail.com'
     subscribe: 'подпісітися'
     unsubscribe: 'відписатися'

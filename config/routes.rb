@@ -1,4 +1,10 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
+  authenticate :admin_user do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   match '/500', via: :all, to: 'errors#internal_server_error'
   match '/422', via: :all, to: 'errors#unprocessable_content'
   match '/404', via: :all, to: 'errors#not_found'

@@ -1,7 +1,11 @@
+# rubocop:disable Metrics/BlockLength
 ActiveAdmin.register AdminUser do
   menu parent: 'Users', label: 'Admin Users'
   permit_params :email, :password, :password_confirmation
   actions :all, except: %i[destroy]
+  action_item only: :show do
+    link_to 'Monitor Jobs', sidekiq_web_path
+  end
 
   index do
     selectable_column
@@ -10,6 +14,7 @@ ActiveAdmin.register AdminUser do
     column :current_sign_in_at
     column :sign_in_count
     column :created_at
+
     actions
   end
 
@@ -27,3 +32,4 @@ ActiveAdmin.register AdminUser do
     f.actions
   end
 end
+# rubocop:enable Metrics/BlockLength
