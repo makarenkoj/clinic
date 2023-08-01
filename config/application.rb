@@ -22,6 +22,7 @@ module Clinic
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    config.exception_app = routes
 
     config.i18n.available_locales = %i[en ua]
     config.i18n.default_locale = :en
@@ -36,5 +37,6 @@ module Clinic
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    config.action_mailer.show_previews = true
   end
 end

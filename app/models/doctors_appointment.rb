@@ -10,23 +10,25 @@ class DoctorsAppointment < ApplicationRecord
 
   private
 
+  # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/PerceivedComplexity
   def doctors_count_validation
     return unless doctor_profile.present?
 
-    if doctor_profile&.doctors_appointments&.select { |ap| ap.visit_time.strftime('%d.%m.%y') == visit_time.strftime('%d.%m.%y') }&.size&.>= DOCTORS_COUNT
+    if doctor_profile&.doctors_appointments&.select { |ap| ap.visit_time&.strftime('%d.%m.%y') == visit_time.strftime('%d.%m.%y') }&.size&.>= DOCTORS_COUNT
       errors.add(:visit_time, I18n.t('activerecord.errors.models.appointment.attributes.day_busy', day: visit_time.strftime('%d.%m.%y')))
     end
 
     doctor_profile.doctors_appointments.each do |a|
-      next unless a.visit_time.strftime('%d.%m.%y %H:%M') == visit_time.strftime('%d.%m.%y %H:%M')
+      next unless a.visit_time&.strftime('%d.%m.%y %H:%M') == visit_time.strftime('%d.%m.%y %H:%M')
 
       errors.add(:visit_time, 
                  I18n.t('activerecord.errors.models.appointment.attributes.time_busy', 
                         time: visit_time.strftime('%d.%m.%y %H:%M')))
     end
   end
+  # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/CyclomaticComplexity
   # rubocop:enable Metrics/PerceivedComplexity
 

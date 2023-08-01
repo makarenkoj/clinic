@@ -22,6 +22,8 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many_attached :pictures
 
+  has_many :pixels
+
   enum type: TYPES
 
   validates :email, presence: true, uniqueness: true
@@ -47,6 +49,15 @@ class User < ApplicationRecord
       where(conditions.to_h).first
     end
   end
+
+  # rubocop:disable Naming/AccessorMethodName
+  def get_last_pixel_color
+    # guard clause, return white if no pixels
+    return 'white' if pixels.empty?
+
+    pixels.last.color 
+  end
+  # rubocop:enable Naming/AccessorMethodName
 
   private
 

@@ -1,5 +1,5 @@
 
-<section class="vh-10" style="background-color: #eee;">
+<section class="vh-10" style="background-color: <%= cookies[:theme] %>;">
   <div class="container py-3">
   <h3 class="text-muted mb-1"><%= t('view.categories.categories_doctors') %></h3>
   <% @doctor_profiles.each do |doctor| %>

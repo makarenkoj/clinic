@@ -53,10 +53,14 @@ gem 'aws-sdk', '~> 2'
 gem 'bootstrap'
 gem 'cancancan'
 gem 'devise'
+# gem 'elasticsearch', '~> 8'
 gem 'jquery-rails'
 gem 'phonelib'
 gem 'sassc-rails'
 gem 'simple_form'
+gem 'twilio-ruby', '~> 5.74.5'
+# gem "searchkick"
+# gem "opensearch-ruby"
 
 group :development, :test do
   gem 'capybara'
@@ -66,6 +70,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'ffaker'
+  gem 'mailcatcher'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 5.0.1'
   gem 'selenium-webdriver'

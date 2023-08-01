@@ -371,9 +371,37 @@ ua:
     make_an_appointment: 'Записатися на прийом'
     doctors: 'Лікарі'
     patients: 'Пацієнти'
+    search_search: 'Пошук лікарів'
+    categories_search: 'Пошук Категорії'
     appointments:
       edit: 'Редагувати запис до лікаря'
       visit_time: 'Дата та час відвідування'
       description: 'Опис'
       new: 'Новий визіт'
     doctor_size: 'Кількість Лікарів'
+  message:
+    sms:
+      new_appointment: 
+        patient: 'Заброньован новий визіт к доктору %{name} %{categories} на %{visit_time}.'
+        doctor: 'До вас заброньован новий визіт %{visit_time} , забронював %{name}.'
+  mailers:
+    subjects:
+      patient_new_appointment_email: 'Визіт до доктора'
+      doctor_new_appointment_email: 'Визіт до доктора'
+    patient_new_appointment_email:
+      title: 'Вітаю '
+      body: 'Заброньован новий визіт к доктору %{doctor_name} %{categories} на %{visit_time}.'
+    doctor_new_appointment_email:
+      title: 'Вітаю '
+      body: 'До вас заброньован новий визіт %{visit_time} , забронював %{patient_name}.'
+      link: 'Подивитись визіт'
+    email: 'clinic@mail.com'
+    subscribe: 'подпісітися'
+    unsubscribe: 'відписатися'
+  pages:
+    secret:
+      choose_collor: 'Оберіть колір'
+      clear: 'Простір очіщено'
+      button: 'Очистити'
+      button_last: 'Видалити останне'
+      last: 'Видален'

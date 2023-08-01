@@ -26,11 +26,29 @@ body {
 
 }
 .swich {
-  color: #BBBBBB;
+  // color: #BBBBBB;
   font-size: 10px;
   line-height: 2px;
 }
 
-.container-bg {
+// .container-bg {
+//   background: #eee;
+// }
+
+body.light {
   background: #eee;
+  color: black;
+}
+
+body.dark {
+  background: black;
+  color: white;
+}
+
+.ms-n5 {
+  margin-left: -40px;
+}
+
+.search {
+  margin-bottom: 15px;
 }
