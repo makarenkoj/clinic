@@ -1,12 +1,9 @@
-default: &default
-  adapter: postgresql
-  encoding: unicode
-
 # production:
-  # url: <%= ENV["DATABASE_URL_PRODUCTION"] %>
+#   url: <%= ENV["DATABASE_URL_PRODUCTION"] %>
 
 production:
- <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: clinic
   username: clinic
   password: <%= ENV["CLINIC_DATABASE_PASSWORD"] %>
