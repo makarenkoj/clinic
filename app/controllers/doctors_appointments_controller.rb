@@ -7,7 +7,7 @@ class DoctorsAppointmentsController < ApplicationController
 
   def show
     @appointment = DoctorsAppointment.find(params[:id])
-
+    AppointmentNotificationJob.perform_later
     access_right_check
 
     @doctor_profile = @appointment.doctor_profile

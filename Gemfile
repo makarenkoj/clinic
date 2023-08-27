@@ -57,6 +57,7 @@ gem 'devise'
 gem 'jquery-rails'
 gem 'phonelib'
 gem 'sassc-rails'
+gem 'sidekiq', '~> 7.1'
 gem 'simple_form'
 gem 'twilio-ruby', '~> 5.74.5'
 # gem "searchkick"
@@ -76,6 +77,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers'
+  gem 'timecop', '~> 0.9.5'
 end
 
 group :development do
