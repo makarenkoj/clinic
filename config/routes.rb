@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql' if Rails.env.development?
+  post '/graphql', to: 'graphql#execute'
   match '/500', via: :all, to: 'errors#internal_server_error'
   match '/422', via: :all, to: 'errors#unprocessable_content'
   match '/404', via: :all, to: 'errors#not_found'
