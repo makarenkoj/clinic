@@ -39,7 +39,11 @@ module Types
     end
 
     def user(id:)
-      User.find_by(id: id)
+      user = User.find_by(id: id)
+
+      raise GraphQL::ExecutionError, 'User not found' unless user
+
+      user
     end
 
     # /categories
