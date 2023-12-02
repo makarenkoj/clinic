@@ -7,7 +7,15 @@ module Types
     field :description, String
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
-    field :doctor, [Types::DoctorProfileType], null: false
-    field :patient, [Types::PatientProfileType], null: false
+    field :doctor, Types::DoctorProfileType, null: false
+    field :patient, Types::PatientProfileType, null: false
+
+    def doctor
+      object.doctor_profile
+    end
+
+    def patient
+      object.patient_profile
+    end
   end
 end

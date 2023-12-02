@@ -7,6 +7,9 @@ FactoryBot.define do
 
     trait :doctor_type do
       type { User::DOCTOR }
+      after(:create) do |user, _evaluator|
+        create(:categories_doctor, doctor_profile: user.doctor_profile)
+      end
     end
 
     trait :patient_type do

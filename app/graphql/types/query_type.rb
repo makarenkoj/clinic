@@ -39,7 +39,11 @@ module Types
     end
 
     def user(id:)
-      User.find_by(id: id)
+      user = User.find_by(id: id)
+
+      raise GraphQL::ExecutionError, 'User not found' unless user
+
+      user
     end
 
     # /categories
@@ -61,6 +65,18 @@ module Types
 
     def doctors
       DoctorProfile.all
+    end
+
+    # /appointments
+    field :appointments, [Types::DoctorsAppointmentType], null: false do
+      argument :user_id, ID, required: true
+    end
+
+    def appointments(user_id:)
+      user = User.find_by(id: user_id)
+      raise GraphQL::ExecutionError, 'User not found' unless user
+
+      user.doctor? ? user.doctor_profile.doctors_appointments : user.patient_profile.doctors_appointments
     end
   end
 end
