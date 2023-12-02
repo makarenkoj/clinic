@@ -3,10 +3,8 @@ require 'rails_helper'
 RSpec.describe 'query categories' do
   it 'return all categories' do
     create_list(:category, 5)
-    category = create(:category)
-    doctor_profile = create(:doctor_profile)
-    doctor_profile.categories << category
-  
+    user_doctor = create(:user, :doctor_type)
+
     query = <<~GQL
       query {
         categories {
@@ -24,7 +22,7 @@ RSpec.describe 'query categories' do
     result = ClinicSchema.execute(query)
 
     expect(result.dig('data', 'categories').size).to eq(6)
-    expect(result.dig('data', 'categories').last['doctors'].first['id']).to eq(doctor_profile.id.to_s)
+    expect(result.dig('data', 'categories').last['doctors'].first['id']).to eq(user_doctor.doctor_profile.id.to_s)
   end
 
   it "when don't have categories" do
