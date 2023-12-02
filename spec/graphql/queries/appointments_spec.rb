@@ -102,6 +102,6 @@ RSpec.describe 'query appointments' do
 
     result = ClinicSchema.execute(query)
 
-    expect(result.dig("errors").first['message']).to eq('User not found')
+    expect(result['errors'].first['message']).to eq('User not found')
   end
 end
