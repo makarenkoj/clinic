@@ -28,7 +28,6 @@ RSpec.describe 'query patients' do
   end
 
   it 'when didnt have patient' do
-
     query = <<~GQL
       query {
         patients {

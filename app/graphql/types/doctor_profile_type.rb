@@ -7,5 +7,10 @@ module Types
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :user, Types::UserType, null: false
     field :categories, [Types::CategoryType], null: false
+    field :appointments, [Types::DoctorsAppointmentType], null: false
+
+    def appointments
+      object.doctors_appointments
+    end
   end
 end
