@@ -9,5 +9,9 @@ module Types
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
     field :doctor, [Types::DoctorProfileType], null: false
     field :patient, [Types::PatientProfileType], null: false
+
+    def doctor
+      object.doctor_profile
+    end
   end
 end
