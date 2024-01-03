@@ -22,7 +22,10 @@ class User < ApplicationRecord
   has_one_attached :image
   has_many_attached :pictures
 
-  has_many :pixels
+  has_many :pixels, dependent: :destroy
+  has_many :rooms, dependent: :destroy
+  has_many :messages, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   enum type: TYPES
 

@@ -10,6 +10,13 @@ RSpec.describe User, type: :model do
     it { is_expected.to have_db_column(:type).of_type(:string) }
   end
 
+  describe 'asociation' do
+    it { should have_many(:pixels).dependent(:destroy) }
+    it { should have_many(:rooms).dependent(:destroy) }
+    it { should have_many(:messages).dependent(:destroy) }
+    it { should have_many(:likes).dependent(:destroy) }
+  end
+
   describe 'validation' do
     context 'email' do
       it { is_expected.to validate_presence_of(:email) }
