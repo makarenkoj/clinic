@@ -1,0 +1,25 @@
+<% if message.user == user %>
+  <div class="d-flex flex-row justify-content-end mb-4">
+      <p class="fw-lighter"><%= l(message.created_at, format: :short) %></p>
+        <div class="p-3 me-3 border " style="border-radius: 15px; background-color: #fbfbfb;">
+          <div class="small mb-0"><%= message.body %></div>
+        </div>
+        <% if message.user.image.attached? %>
+          <%= image_tag message.user.image, class: "rounded-circle img-fluid", style: "width: 45px;", height: "100%", alt: "avatar2"  %>
+        <% else %>
+          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+        <% end %>
+  </div>
+<% else %>
+  <div class="d-flex flex-row justify-content-start mb-4">
+      <% if message.user.image.attached? %>
+        <%= image_tag message.user.image, class: "rounded-circle img-fluid", style: "width: 45px;", height: "100%", alt: "avatar1"  %>
+      <% else %>
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp" alt="avatar 1" style="width: 45px; height: 100%;">
+      <% end %>
+      <p class="fw-lighter"><%= l(message.created_at, format: :short) %></p>
+      <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+        <div class="small mb-0"><%= message.body %></div>
+      </div>
+  </div>
+<% end %>

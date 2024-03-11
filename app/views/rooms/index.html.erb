@@ -1,0 +1,15 @@
+<%= turbo_stream_from :rooms %>
+
+<%= turbo_frame_tag :rooms do %>
+  <%= render @rooms %>
+<% end %>
+
+<% if user_signed_in? %>
+  <%= simple_form_for @new_room, class: "mr-md-3" do |f| %>
+    <div class="row">
+      <div class="span8">
+        <%= f.submit 'New Room' %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

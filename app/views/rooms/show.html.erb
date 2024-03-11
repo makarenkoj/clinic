@@ -1,0 +1,43 @@
+<%= turbo_stream_from @room %>
+
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-8 col-lg-6 col-xl-4">
+        <div class="card" id="chat1" style="border-radius: 15px;">
+          <div
+            class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
+            style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+            <i class="fas fa-angle-left"></i>
+            <p class="mb-0 fw-bold">Live chat</p>
+            <i class="fas fa-times"></i>
+          </div>
+          <div class="card-body">
+
+            <%= turbo_frame_tag :messages do %>
+              <%= render partial: "messages/message", collection: @messages, locals: { user: current_user } %>
+            <% end %>
+
+            <%= simple_form_for @new_message, html: {multipart: true}, wrapper: :vertical_multi_select, data: { controller: "chat_refresh", action: "turbo:submit-end->chat_refresh#clearInput" } do |f| %>
+              <%= render partial: 'partials/form_errors', locals: {model: @new_message} %>
+
+              <div class="form-group">
+                <div class="span8" rows="4">
+                  <%= f.input :body,
+                              as: :text,
+                              autofocus: true,
+                              placeholder: 'Type your message',
+                              label: false %>
+                  <%= f.hidden_field :room_id, value: @room.id %>
+                </div>
+              </div>
+              <div class="actions mt-3">
+                <%= f.button :submit, t('activerecord.attributes.doctor_profile.save'), class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

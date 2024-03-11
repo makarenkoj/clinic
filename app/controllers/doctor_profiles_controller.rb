@@ -8,6 +8,7 @@ class DoctorProfilesController < ApplicationController
 
   def show
     @doctor_profile = DoctorProfile.find(params[:id])
+    @room = find_room(@doctor_profile.user.id, current_user.id)
   end
 
   def edit
@@ -41,5 +42,14 @@ class DoctorProfilesController < ApplicationController
 
   def doctor_profile_params
     params.require(:doctor_profile).permit(:description, category_ids: [])
+  end
+
+  def find_room(user1_id, user2_id)
+    Room.private_rooms
+        .joins('INNER JOIN participants ON rooms.id = participants.room_id LEFT JOIN users ON participants.user_id = users.id')
+        .where("participants.user_id IN (#{user1_id}, #{user2_id})")
+        .group('rooms.id')
+        .having('COUNT(DISTINCT participants.user_id) = 2')
+        .first
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_03_175148) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_04_223121) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -136,6 +136,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_03_175148) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "participants", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_participants_on_room_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
+
   create_table "patient_profiles", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.text "description"
@@ -159,6 +168,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_03_175148) do
     t.string "title", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_private", default: false
     t.index ["title"], name: "index_rooms_on_title"
     t.index ["user_id"], name: "index_rooms_on_user_id"
   end
@@ -187,6 +197,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_03_175148) do
   add_foreign_key "likes", "users"
   add_foreign_key "messages", "rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "participants", "rooms"
+  add_foreign_key "participants", "users"
   add_foreign_key "patient_profiles", "users"
   add_foreign_key "pixels", "users"
   add_foreign_key "rooms", "users"

@@ -13,6 +13,13 @@ Rails.application.routes.draw do
     resources :patient_profiles
     resources :categories
     resources :doctors_appointments
+    resources :rooms, only: %i[index show create], param: :title do
+      post :create_private_room, on: :collection
+    end
+
+    resources :messages, only: :create do
+      member { post :like }
+    end
 
     resources :pixels, only: %i[create update index] do
       collection do
