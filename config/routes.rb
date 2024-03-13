@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :patient_profiles
     resources :categories
     resources :doctors_appointments
+    resources :notes
 
     resources :pixels, only: %i[create update index] do
       collection do
