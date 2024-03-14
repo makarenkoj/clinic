@@ -299,6 +299,12 @@ en:
       updated: 'You have updated the appointment'
       create: 'Create new doctor appointments'
       created: 'Record saved'
+    note:
+      edit: "You can`t edit this note"
+      updated: 'Note was updated'
+      id: 'Id'
+      date: 'Date'
+      body: 'Body'
   view:
     user:
       username: 'username'
@@ -328,6 +334,10 @@ en:
       description: 'Description'
       new: 'New appointment'
     doctor_size: 'Number of Doctors'
+    datetime: 'Date Time'
+    notes:
+      new: 'New note'
+      all: 'Notes'
   message:
     sms:
       new_appointment: 
