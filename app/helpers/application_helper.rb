@@ -21,15 +21,13 @@ module ApplicationHelper
   end
 
   def paginate(result)
-    content_tag :li, class: "page-item" do
-      concat(render_pagination_link '<<',
-             result.current_page - 1,
-             result.current_page <= 1
-            )
-      concat(render_pagination_link '>>',
-             result.current_page + 1,
-             result.current_page >= result.total_pages
-      )
+    content_tag :li, class: 'page-item' do
+      concat(render_pagination_link('<<',
+                                    result.current_page - 1,
+                                    result.current_page <= 1))
+      concat(render_pagination_link('>>',
+                                    result.current_page + 1,
+                                    result.current_page >= result.total_pages))
     end
   end
 

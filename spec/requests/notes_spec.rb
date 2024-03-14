@@ -100,7 +100,7 @@ RSpec.describe 'Notes', type: :request do
 
       expect(response).to have_http_status(:redirect)
       expect(Note.find_by(id: note.id)).to be nil
-      expect(flash['notice']).to eql'User was successfully deleted :('
+      expect(flash['notice']).to eql 'User was successfully deleted :('
     end
 
     it 'user not autorized' do

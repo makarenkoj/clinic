@@ -4,9 +4,9 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe 'paginate' do
     subject(:paginate) { helper.paginate(result) }
 
-    let(:result) {
+    let(:result) do
       instance_double(PaginationResultService, current_page: current_page, total_pages: 3)
-    }
+    end
 
     let(:current_page) { 2 }
 
@@ -28,7 +28,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
   describe 'emoji_flag' do
     it 'return correct flag' do
-      expect(helper.emoji_flag('ua')).to eql "🇺🇦"
+      expect(helper.emoji_flag('ua')).to eql '🇺🇦'
     end
   end
 

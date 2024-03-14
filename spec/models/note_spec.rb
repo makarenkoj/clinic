@@ -28,7 +28,7 @@ RSpec.describe Note, type: :model do
     let!(:note6) { create(:note, body: '6') }
     let!(:note7) { create(:note, body: '7') }
 
-    it {is_expected.to eq([note5, note6])}
+    it { is_expected.to eq([note5, note6]) }
 
     it 'total pages' do
       expect(subject.total_pages).to eql 4
