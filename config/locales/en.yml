@@ -68,6 +68,10 @@ en:
         save: 'Save'
         back: 'Back'
         or: 'or'
+      note:
+        save: 'Save'
+        back: 'Back'
+        or: 'or'
     app:
       name: 'Clinic'
       url: 'clinic.com'
@@ -336,8 +340,12 @@ en:
     doctor_size: 'Number of Doctors'
     datetime: 'Date Time'
     notes:
+      edit: 'Edit note'
       new: 'New note'
       all: 'Notes'
+      id: 'Id'
+      date: 'Date'
+      body: 'Body'
   message:
     sms:
       new_appointment: 
