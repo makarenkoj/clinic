@@ -5,7 +5,7 @@ RSpec.describe ApplicationHelper, type: :helper do
     subject(:paginate) { helper.paginate(result) }
 
     let(:result) {
-      instance_double(Note::PaginationResult, current_page: current_page, total_pages: 3)
+      instance_double(PaginationResultService, current_page: current_page, total_pages: 3)
     }
 
     let(:current_page) { 2 }
