@@ -3,9 +3,9 @@ class Note < ApplicationRecord
 
   validates :body, :date_time, presence: true
 
-  LIMIT = 10.freeze
+  LIMIT = 10
 
-  scope :paginate, -> (page:, per_page: LIMIT) {
+  scope :paginate, lambda { |page:, per_page: LIMIT|
     page = (page || 1).to_i
     current_scope = limit(per_page).offset((page - 1) * per_page)
 
