@@ -38,5 +38,4 @@ module ApplicationHelper
       link_to_unless disabled, label, notes_path(page: page)
     end
   end
-
 end
