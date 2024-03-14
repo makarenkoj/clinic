@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/rmosolgo/graphiql-rails.git
+  revision: f47d94019052752f364aeaed8343046a319afdd1
+  specs:
+    graphiql-rails (1.9.0)
+      railties
+      sprockets-rails
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -153,6 +161,9 @@ GEM
     formtastic (5.0.0)
       actionpack (>= 6.0.0)
     formtastic_i18n (0.7.0)
+    graphql (2.1.6)
+      racc (~> 1.4)
+    haml (6.1.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
     haml (6.3.0)
@@ -444,6 +455,8 @@ DEPENDENCIES
   factory_bot_rails
   faker
   ffaker
+  graphiql-rails!
+  graphql (~> 2.1)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
