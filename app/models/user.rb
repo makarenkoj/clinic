@@ -23,6 +23,7 @@ class User < ApplicationRecord
   has_many_attached :pictures
 
   has_many :pixels
+  has_many :notes, dependent: :destroy
 
   enum type: TYPES
 

@@ -25,6 +25,14 @@
           </div>
         </div>
         <% if current_user_can_edit?(@patient_profile) %>
+        <%# notes %>
+        <div class="card mb-4">
+          <div class="d-flex justify-content-center mb-2 p-3">
+              <%= link_to t('view.notes.new'), new_note_path, class: 'btn btn-info' %>
+              <%= link_to t('view.notes.all'), notes_url, class: 'btn btn-info ms-5' %>
+          </div>
+        </div>
+        <%# description %>
         <div class="card mb-4 mb-lg-0">
           <div class="card-body p-0">
             <ul class="list-group list-group-flush rounded-3">

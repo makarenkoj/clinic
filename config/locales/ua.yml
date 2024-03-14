@@ -68,6 +68,10 @@ ua:
         save: 'Зберегти'
         back: 'Повернуться'
         or: 'або'
+      note:
+        save: 'Зберегти'
+        back: 'Повернуться'
+        or: 'або'
     app:
       name: 'Поліклініка'
       url: 'clinic.com'
@@ -350,6 +354,9 @@ ua:
       updated: 'Ви оновили призначення'
       create: 'Завітати до лікаря'
       created: 'Запис збережено'
+    note:
+      edit: 'Ви не можете редагувати цю нотатку'
+      updated: 'Примітку оновлено'
   view:
     user:
       username: "ім'я користувача"
@@ -379,6 +386,14 @@ ua:
       description: 'Опис'
       new: 'Новий визіт'
     doctor_size: 'Кількість Лікарів'
+    datetime: 'День та час'
+    notes:
+      edit: 'Редагувати запис'
+      new: 'Нова нотатка'
+      all: 'Нотатки'
+      id: '№'
+      date: 'Дата'
+      body: 'Текст'
   message:
     sms:
       new_appointment: 

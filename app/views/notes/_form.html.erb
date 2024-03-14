@@ -1,0 +1,21 @@
+<%= simple_form_for @note, html: {multipart: true}, wrapper: :vertical_multi_select do |f| %>
+  <%= render partial: 'partials/form_errors', locals: {model: @note} %>
+
+  <div class="form-group">
+    <%= f.input :date_time,
+        as: :datetime,
+        label: t('view.datetime'),
+        class: "form-control form-control-lg",
+        # input_html: {value: params[:start_date]},
+        wrapper_html: { class: 'mb-3' },
+        error_class: 'is-invalid', 
+        valid_class: 'is-valid',
+        html5: true %>
+    <%= f.input :body, label: t('view.notes.body'), as: :text, input_html: {rows: 23, cols: 150 } %>
+  </div>
+  <div class="actions"> 
+    <%= f.button :submit, t('activerecord.attributes.note.save'), class: 'btn btn-primary' %>
+    <%= t('activerecord.attributes.note.or') %>
+    <%= link_to t('activerecord.attributes.note.back'), :back, class: 'btn btn-primary' %>
+  </div>
+<% end %>
