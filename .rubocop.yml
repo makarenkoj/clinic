@@ -151,3 +151,5 @@ Style/HashConversion:
   Enabled: true
 Style/StringChars:
   Enabled: true
+Naming/MethodParameterName:
+  Enabled: false

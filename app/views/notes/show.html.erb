@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="text-center">
+  <p><%= @note.date_time %> </p>
+  <p><%= @note.body %> </p>
+
+  <% if @note&.user == current_user %>
+    <%= link_to t('activerecord.attributes.user.edit_profile'), edit_note_path(@note), class: 'btn btn-primary buffer-right' %>
+    <%= link_to t('activerecord.attributes.user.delete_profile'), @note,
+              data: { turbo_method: :delete, turbo_confirm: t('activerecord.attributes.user.delete_profile_confirm')},
+              class: "btn btn-danger" %>
+  <% else %>
+    <p><%= t('activerecord.attributes.user.current_user')%></p>
+  <% end %>
+</div>

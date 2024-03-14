@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.2'
+ruby '3.2.2'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4'
@@ -61,6 +61,7 @@ gem 'simple_form'
 gem 'twilio-ruby', '~> 5.74.5'
 # gem "searchkick"
 # gem "opensearch-ruby"
+gem 'graphql', '~> 2.1'
 
 group :development, :test do
   gem 'capybara'
@@ -79,6 +80,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'graphiql-rails', github: 'rmosolgo/graphiql-rails'
   gem 'rubocop', '~> 1.16', require: false
   gem 'rubocop-faker'
   gem 'web-console'
