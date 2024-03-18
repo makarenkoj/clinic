@@ -6,4 +6,8 @@
     <div id="results">
       <%= render 'partials/categories', categories: @categories %>
     </div>
+
+    <% if @next_categories %>
+      <%= link_to t('view.categories.next_categories'), next_categories: @next_categories %>
+    <% end %>
 </div>

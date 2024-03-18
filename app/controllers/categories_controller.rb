@@ -4,7 +4,11 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.all
+    pagination_conditions = params[:next_categories] ? ['id >= ?', params[:next_categories]] : nil
+
+    all_categories = Category.where(pagination_conditions).order(id: :asc).limit(11).to_a
+    @categories = all_categories[0..9]
+    @next_categories = all_categories[10]
   end
 
   def show
