@@ -22,27 +22,27 @@ AdminUser.create!(email: 'admin@example.com', password: password, password_confi
 
 puts 'Creating category'
 
-category = [{:Cardiologist=>"Кардіолог"},
-  {:Physicians=>"Цілитель"},
-  {:"Emergency Medicine"=>"Невідкладна медицина"},
-  {:Endocrinologist=>"Ендокринолог"},
-  {:Gastroenterologist=>"Гастроентеролог"},
-  {:Oncologist=>"Онколог"},
-  {:Internist=>"Інтерніст"},
-  {:Ophthalmologist=>"Лікар-офтальмолог"},
-  {:Radiologist=>"Рентгенолог"},
-  {:Nephrologist=>"Нефролог"},
-  {:Allergist=>"Алерголог"},
-  {:Anesthesiologist=>"Анестезіолог"},
-  {:Geriatrician=>"Геріатр"},
-  {:Pathology=>"Патологія"},
-  {:"General practitioner"=>"Лікар загальної практики"},
-  {:"Infectious Disease Specialist"=>"Лікар-інфекціоніст"},
-  {:Orthopedist=>"Ортопед"},
-  {:Otolaryngologist=>"Отоларинголог"},
-  {:Pulmonologist=>"Пульмонолог"}]
+category = [{ Cardiologist: 'Кардіолог' },
+            { Physicians: 'Цілитель' },
+            { 'Emergency Medicine': 'Невідкладна медицина' },
+            { Endocrinologist: 'Ендокринолог' },
+            { Gastroenterologist: 'Гастроентеролог' },
+            { Oncologist: 'Онколог' },
+            { Internist: 'Інтерніст' },
+            { Ophthalmologist: 'Лікар-офтальмолог' },
+            { Radiologist: 'Рентгенолог' },
+            { Nephrologist: 'Нефролог' },
+            { Allergist: 'Алерголог' },
+            { Anesthesiologist: 'Анестезіолог' },
+            { Geriatrician: 'Геріатр' },
+            { Pathology: 'Патологія' },
+            { 'General practitioner': 'Лікар загальної практики' },
+            { 'Infectious Disease Specialist': 'Лікар-інфекціоніст' },
+            { Orthopedist: 'Ортопед' },
+            { Otolaryngologist: 'Отоларинголог' },
+            { Pulmonologist: 'Пульмонолог' }]
 
-category.each { |cat| Category.create!(name_ua: "#{cat.values[0]}", name_en: "#{cat.keys[0].to_s}") }
+category.each { |cat| Category.create!(name_ua: cat.values[0].to_s, name_en: cat.keys[0].to_s) }
 
 if Rails.env.development?
   puts 'Creating doctor'
@@ -50,7 +50,7 @@ if Rails.env.development?
   10.times do |i|
     doctor = User.create!(email: "#{Faker::GreekPhilosophers.name}#{i}@mail.com",
                           phone_number: "+38066784558#{i}", 
-                          username:  new_name, 
+                          username: new_name, 
                           type: User::DOCTOR, 
                           password: password, password_confirmation: password)
     doctor.doctor_profile.categories << Category.all[i]
