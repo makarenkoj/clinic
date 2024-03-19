@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
     error.messages.map { |_k, v| v }.join('<br>').html_safe
   end
 
+  def params_order
+    params[:order] ? params[:order].to_sym : :asc
+  end
+
   private
 
   def switch_locale(&action)
