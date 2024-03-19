@@ -20,6 +20,7 @@ module ApplicationHelper
     ENV.fetch('BACKEND_URL', nil) + path
   end
 
+  # rubocop:disable Metrics/AbcSize
   def paginate(result)
     if result.first.instance_of?(::DoctorProfile)
       content_tag :li, class: 'page-item' do
@@ -39,8 +40,18 @@ module ApplicationHelper
                                              result.current_page + 1,
                                              result.current_page >= result.total_pages))
       end
+    elsif result.first.instance_of?(::PatientProfile)
+      content_tag :li, class: 'page-item' do
+        concat(render_patient_profile_pagination_link('<<',
+                                                      result.current_page - 1,
+                                                      result.current_page <= 1))
+        concat(render_patient_profile_pagination_link('>>',
+                                                      result.current_page + 1,
+                                                      result.current_page >= result.total_pages))
+      end
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def render_doctor_profile_pagination_link(label, page, disabled)
     content_tag :li, class: ('page-item disabled' if disabled) do
@@ -48,9 +59,19 @@ module ApplicationHelper
     end
   end
 
+  def render_patient_profile_pagination_link(label, page, disabled)
+    content_tag :li, class: ('page-item disabled' if disabled) do
+      link_to_unless disabled, label, patient_profiles_path(page: page)
+    end
+  end
+
   def render_notice_pagination_link(label, page, disabled)
     content_tag :li, class: ('page-item disabled' if disabled) do
       link_to_unless disabled, label, notes_path(page: page)
     end
+  end
+
+  def order_by(direction)
+    params.to_unsafe_h.merge(order: direction, only_path: true).except(:script_name, :original_script_name)
   end
 end
