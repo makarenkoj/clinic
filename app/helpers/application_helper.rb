@@ -20,6 +20,7 @@ module ApplicationHelper
     ENV.fetch('BACKEND_URL', nil) + path
   end
 
+  # rubocop:disable Metrics/AbcSize
   def paginate(result)
     if result.first.instance_of?(::DoctorProfile)
       content_tag :li, class: 'page-item' do
@@ -50,6 +51,7 @@ module ApplicationHelper
       end
     end
   end
+  # rubocop:enable Metrics/AbcSize
 
   def render_doctor_profile_pagination_link(label, page, disabled)
     content_tag :li, class: ('page-item disabled' if disabled) do
@@ -70,6 +72,6 @@ module ApplicationHelper
   end
 
   def order_by(direction)
-    { order: direction }
+    params.to_unsafe_h.merge(order: direction, only_path: true).except(:script_name, :original_script_name)
   end
 end
