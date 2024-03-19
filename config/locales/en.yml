@@ -326,6 +326,7 @@ en:
     categories:
       categories: 'Categories'
       categories_doctors: 'Doctors with this category: '
+      next_categories: 'Next categories'
     recomendation: 'Recomendation'
     make_an_appointment: 'Make an appointment'
     doctors: 'Doctors'

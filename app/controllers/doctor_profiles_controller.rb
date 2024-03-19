@@ -3,7 +3,7 @@ class DoctorProfilesController < ApplicationController
   before_action :check_doctor!, except: %i[index show]
 
   def index
-    @doctor_profiles = DoctorProfile.all
+    @doctor_profiles = DoctorProfile.order(updated_at: params_order).paginate(page: params[:page])
   end
 
   def show

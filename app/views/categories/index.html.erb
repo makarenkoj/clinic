@@ -3,7 +3,22 @@
     <div class="search">
       <%= render 'partials/search_categories_form' %>
     </div>
+
+    <%# <div class="d-flex justify-content-center mb-2 p-3"> %>
+      <%# <%= link_to(order_by(:desc), class: 'bi bi-sort-down') do %>
+        <%# <%= image_tag 'sort-up-alt.svg', class: 'bi bi-sort-down', alt: 'Sort Down' %> 
+      <%# <% end %>
+
+      <%# <%= link_to(order_by(:asc), class: 'bi bi-sort-down') do %> 
+        <%# <%= image_tag 'sort-down.svg', class: 'bi bi-sort-down', alt: 'Sort Down' %> 
+      <%# <% end %>
+    <%# </div> %>
+
     <div id="results">
       <%= render 'partials/categories', categories: @categories %>
     </div>
+
+    <% if @next_categories %>
+      <%= link_to t('view.categories.next_categories'), next_categories: @next_categories %>
+    <% end %>
 </div>

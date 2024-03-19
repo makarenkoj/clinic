@@ -374,6 +374,7 @@ ua:
     categories:
       categories: 'Категорії'
       categories_doctors: 'Доктора з ціею категоріею: '
+      next_categories: 'Наступні категорії'
     recomendation: 'Рекомендація'
     make_an_appointment: 'Записатися на прийом'
     doctors: 'Лікарі'
