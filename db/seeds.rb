@@ -20,8 +20,6 @@ puts 'Create admin'
 
 AdminUser.create!(email: 'admin@example.com', password: password, password_confirmation: password) if Rails.env.development?
 
-puts 'Creating category'
-
 category = [{ Cardiologist: 'Кардіолог' },
             { Physicians: 'Цілитель' },
             { 'Emergency Medicine': 'Невідкладна медицина' },
@@ -42,9 +40,16 @@ category = [{ Cardiologist: 'Кардіолог' },
             { Otolaryngologist: 'Отоларинголог' },
             { Pulmonologist: 'Пульмонолог' }]
 
-category.each { |cat| Category.create!(name_ua: cat.values[0].to_s, name_en: cat.keys[0].to_s) }
+if Rails.env.production?
+  puts 'Creating category'
+  category.each { |cat| Category.create!(name_ua: cat.values[0].to_s, name_en: cat.keys[0].to_s) }
+end
 
 if Rails.env.development?
+  puts 'Creating category'
+
+  category.each { |cat| Category.create!(name_ua: cat.values[0].to_s, name_en: cat.keys[0].to_s) }
+
   puts 'Creating doctor'
 
   10.times do |i|
