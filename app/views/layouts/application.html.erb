@@ -126,6 +126,11 @@
             <a><%= link_to '   ', pages_space_path, class: 'btn swich' %></a>
           </div>
         </div>
+        <div class="navbar-brand">
+          <div class="lokale">
+            <a><%= link_to '🔗', nil, data: { controller: 'share', action: 'share#click', share_url_value: request.url }, class: 'btn btn-dark' %></a>
+          </div>
+        </div>
       </div>
     </nav>
 
