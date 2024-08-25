@@ -386,6 +386,7 @@ ua:
       visit_time: 'Дата та час відвідування'
       description: 'Опис'
       new: 'Новий визіт'
+      time_before_visit: 'Часу до відвідування:'
     doctor_size: 'Кількість Лікарів'
     datetime: 'День та час'
     notes:

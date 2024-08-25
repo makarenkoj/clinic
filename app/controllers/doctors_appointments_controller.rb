@@ -31,18 +31,18 @@ class DoctorsAppointmentsController < ApplicationController
     if appointment.save
       # add transaction
       ActiveRecord::Base.transaction do
-        visit_time = properties[:visit_time].to_datetime.strftime('%H:%M %d/%m/%Y')
+        properties[:visit_time].to_datetime.strftime('%H:%M %d/%m/%Y')
 
-        Twilio::SmsService.new(body: I18n.t('message.sms.new_appointment.doctor',
-                                            visit_time: visit_time, 
-                                            name: current_user.username.titleize),
-                               to_phone_number: user_doctor.phone_number).call
+        # Twilio::SmsService.new(body: I18n.t('message.sms.new_appointment.doctor',
+        #                                     visit_time: visit_time, 
+        #                                     name: current_user.username.titleize),
+        #                        to_phone_number: user_doctor.phone_number).call
 
-        Twilio::SmsService.new(body: I18n.t('message.sms.new_appointment.patient',
-                                            visit_time: visit_time, 
-                                            name: user_doctor.username.titleize, 
-                                            categories: user_doctor.doctor_profile.categories.last&.name_en),
-                               to_phone_number: current_user.phone_number).call
+        # Twilio::SmsService.new(body: I18n.t('message.sms.new_appointment.patient',
+        #                                     visit_time: visit_time, 
+        #                                     name: user_doctor.username.titleize, 
+        #                                     categories: user_doctor.doctor_profile.categories.last&.name_en),
+        #                        to_phone_number: current_user.phone_number).call
 
         Notifications::Email.send_new_appointment_email(appointment_id: appointment.id)
 

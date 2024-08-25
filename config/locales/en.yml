@@ -338,6 +338,7 @@ en:
       visit_time: 'Visit date & time'
       description: 'Description'
       new: 'New appointment'
+      time_before_visit: 'Time before the visit:'
     doctor_size: 'Number of Doctors'
     datetime: 'Date Time'
     notes:
