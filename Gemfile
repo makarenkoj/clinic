@@ -62,6 +62,8 @@ gem 'twilio-ruby', '~> 5.74.5'
 # gem "searchkick"
 # gem "opensearch-ruby"
 gem 'graphql', '~> 2.1'
+gem 'rack-cors'
+gem 'jbuilder'
 
 group :development, :test do
   gem 'capybara'

@@ -310,6 +310,9 @@ en:
       date: 'Date'
       body: 'Body'
   view:
+    watching:
+      delete: 'Delete'
+      delete_confirm: 'Are you sure?'
     user:
       username: 'username'
       email: 'email'

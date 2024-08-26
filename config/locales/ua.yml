@@ -358,6 +358,9 @@ ua:
       edit: 'Ви не можете редагувати цю нотатку'
       updated: 'Примітку оновлено'
   view:
+    watching:
+      delete: 'Видалити'
+      delete_confirm: 'Ти впевнений?'
     user:
       username: "ім'я користувача"
       email: 'електронна адреса'
