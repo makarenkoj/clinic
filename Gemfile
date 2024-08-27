@@ -84,4 +84,8 @@ group :development do
   gem 'rubocop', '~> 1.16', require: false
   gem 'rubocop-faker'
   gem 'web-console'
+  gem "capistrano", "~> 3.17", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
+  gem 'capistrano-passenger'
+  gem 'capistrano-rbenv', '~> 2.2'
 end
