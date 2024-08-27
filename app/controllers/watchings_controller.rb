@@ -1,6 +1,6 @@
 class WatchingsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:create]
-  before_action :authenticate_user!, only: [:show, :index]
+  before_action :authenticate_user!, only: %i[show index]
 
   def index
     @watchings = Watching.order(updated_at: params_order).paginate(page: params[:page])
@@ -21,7 +21,7 @@ class WatchingsController < ApplicationController
     end
 
     if watching.save
-      render 'watchings/create', formats:[:json], locals: { watching: watching }
+      render 'watchings/create', formats: [:json], locals: { watching: watching }
     else
       render_json_error(error: watching.errors.messages.transform_values { |msgs| msgs[0] })
     end
@@ -30,7 +30,8 @@ class WatchingsController < ApplicationController
   private
 
   def watching_params
-    params.require(:watching).permit(:ip, :status, :message, :country, :country_code, :region, :region_name, :city, :zip, :lat, :lon, :timezone, :isp, :org, :as, :proxy, :hosting, :query)
+    params.require(:watching).permit(:ip, :status, :message, :country, :country_code, :region, :region_name, :city, :zip, :lat, :lon, :timezone, :isp, :org, :as, :proxy, 
+                                     :hosting, :query)
   end
 
   def set_cors_headers

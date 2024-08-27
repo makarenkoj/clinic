@@ -63,7 +63,6 @@ gem 'twilio-ruby', '~> 5.74.5'
 # gem "opensearch-ruby"
 gem 'graphql', '~> 2.1'
 gem 'rack-cors'
-gem 'jbuilder'
 
 group :development, :test do
   gem 'capybara'
@@ -87,3 +86,7 @@ group :development do
   gem 'rubocop-faker'
   gem 'web-console'
 end
+
+gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "redis", "~> 5.3"

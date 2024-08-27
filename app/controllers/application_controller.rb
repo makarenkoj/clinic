@@ -77,7 +77,7 @@ class ApplicationController < ActionController::Base
     result = {}
     camel_str.each do |key, value|
       snake_case_str = key.gsub(/([A-Z])/, '_\1').downcase
-      snake_key = snake_case_str[0] == '_' ? snake_case_str[1..-1] : snake_case_str
+      snake_key = snake_case_str[0] == '_' ? snake_case_str[1..] : snake_case_str
       result[snake_key.to_sym] = value
     end
 

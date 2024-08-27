@@ -44,9 +44,9 @@ module Clinic
         origins '*' # Вкажіть точний домен, з якого буде дозволено запити
         # origins 'http://127.0.0.1:5500' # Вкажіть точний домен, з якого буде дозволено запити
         resource '/watchings',
-          headers: :any,
-          methods: [:post],
-          credentials: false # Якщо ви використовуєте куки чи інші механізми автентифікації
+                 headers: :any,
+                 methods: [:post],
+                 credentials: false # Якщо ви використовуєте куки чи інші механізми автентифікації
       end
     end
   end
