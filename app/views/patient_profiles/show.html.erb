@@ -47,45 +47,80 @@
       </div>
       <div class="col-lg-8">
         <% if current_user_can_edit?(@patient_profile) %>
-        <div class="card mb-4">
-          <div class="card-body">
-            <% @patient_profile.doctors_appointments.order(:visit_time).each do |appointment| %>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0"><%= link_to appointment.doctor_profile.user.username.humanize, appointment.doctor_profile, class: 'btn btn-light' %></p>
+          <div class="container mt-0 mb-3">
+              <div class="row">
+                <% @patient_profile.doctors_appointments.order(visit_time: 'DESC').each do |appointment| %>
+                  <div class="col-md-4" id="timer-box">
+                      <div class="card p-3 mb-2">
+                          <div class="d-flex justify-content-between">
+                              <div class="d-flex flex-row align-items-center">
+                                  <%# image %>
+                                  <div class="icon">
+                                  <% if appointment.doctor_profile.user.image.attached? %>
+                                    <i class="bx bxl-mailchimp"><%= image_tag appointment.doctor_profile.user.image, class: "rounded-circle img-fluid", style: "border-radius:50%;, width: 50px;, height:50px;", alt: "avatar" %></i>
+                                  <% else %>
+                                    <i class="bx bxl-mailchimp"></i>
+                                  <% end %>
+                                  </div>
+                                  <div class="ms-2 c-details">
+                                      <h6 class="mb-0"><%= link_to appointment.doctor_profile.user.username.humanize, appointment.doctor_profile, class: 'btn btn-light' %></h6> 
+                                      <span>
+                                      <div class="col-sm-12">
+                                        <p class="text-muted mb-0" id="deadline"><%= appointment.visit_time %></p> 
+                                        <div class="timer-box">
+                                          <div class="countdown mt-4 timer">
+                                            <div class="title"><%= t('view.appointments.time_before_visit') %></div> 
+                                              <span id="days">00</span> :
+                                              <span id="hours">00</span> :
+                                              <span id="minutes">00</span> :
+                                              <span id="seconds">00</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div></span>
+                                  </div>
+                              <div class="badge"> 
+                                <span>
+                                  <% if appointment.doctor_profile.categories.present? %>
+                                    <% if I18n.locale == :ua %> 
+                                      <%= appointment.doctor_profile.categories.first&.name_ua %>
+                                    <% else %> 
+                                      <%= appointment.doctor_profile.categories.first&.name_en %>
+                                    <% end %>
+                                  <% end %> 
+                                </span>
+                              </div>
+                          </div>
+                          <div class="mt-5">
+                              <%# <h3 class="heading">
+                              </h3> %>
+                              <div class="mt-5">
+                                  <div class="progress">
+                                      <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
+                                  <div class="mt-3"> 
+                                    <span class="text1"><%= link_to t('view.recomendacion'), appointment, class: 'btn btn-light' %></span> 
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <% end %>
               </div>
-              <div class="col-sm-3">
-                <p class="text-muted mb-0"><%= link_to t('view.recomendacion'), appointment, class: 'btn btn-light' %></p>
-              </div>
-              <div class="col-sm-3">
-              <% if appointment.doctor_profile.categories.present? %>
-                <% if I18n.locale == :ua %>
-                  <p class="text-muted mb-0"><%= link_to appointment.doctor_profile.categories.first&.name_ua, appointment.doctor_profile.categories.first, class: 'btn btn-light' %></p>
-                <% else %>
-                  <p class="text-muted mb-0"><%= link_to appointment.doctor_profile.categories.first&.name_en, appointment.doctor_profile.categories.first, class: 'btn btn-light' %></p>
-                <% end %>
-              <% end %>
-              </div>
-              <div class="col-sm-3">
-                <p class="text-muted mb-0"><%= date_format(appointment.visit_time) %></p>
-              </div>
-            </div>
-            <hr>
-            <% end %>
           </div>
-        </div>
         <% end %>
+
         <% unless current_user_can_edit?(@patient_profile) %>
-        <div class="card mb-4">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-12">
-                <p class="mb-0"><%= @patient_profile.description %></p>
+          <div class="card mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-12">
+                  <p class="mb-0"><%= @patient_profile.description %></p>
+                </div>
               </div>
+              <hr>
             </div>
-            <hr>
           </div>
-        </div>
         <% end %>
         </div>
       </div>

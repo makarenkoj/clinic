@@ -4,6 +4,16 @@
   <%= link_to t('view.notes.new'), new_note_path, class: 'btn btn-info' %>
 </div>
 <%# ToDo: Fix background %>
+<div class="d-flex justify-content-center mb-2 p-3">
+  <%= link_to(order_by(:desc), class: 'bi bi-sort-down') do %>
+    <%= image_tag 'sort-up-alt.svg', class: 'bi bi-sort-down', alt: 'Sort Down' %>
+  <% end %>
+
+  <%= link_to(order_by(:asc), class: 'bi bi-sort-down') do %>
+    <%= image_tag 'sort-down.svg', class: 'bi bi-sort-down', alt: 'Sort Down' %>
+  <% end %>
+</div>
+
 <table class="table">
     <thead>
       <tr>

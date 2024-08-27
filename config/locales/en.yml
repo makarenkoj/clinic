@@ -326,6 +326,7 @@ en:
     categories:
       categories: 'Categories'
       categories_doctors: 'Doctors with this category: '
+      next_categories: 'Next categories'
     recomendation: 'Recomendation'
     make_an_appointment: 'Make an appointment'
     doctors: 'Doctors'
@@ -337,6 +338,7 @@ en:
       visit_time: 'Visit date & time'
       description: 'Description'
       new: 'New appointment'
+      time_before_visit: 'Time before the visit:'
     doctor_size: 'Number of Doctors'
     datetime: 'Date Time'
     notes:
