@@ -52,7 +52,7 @@ gem 'activeadmin'
 # gem 'aws-sdk', '~> 2'
 gem 'bootstrap'
 gem 'cancancan'
-gem 'devise'
+# gem 'devise'
 # gem 'elasticsearch', '~> 8'
 gem 'jquery-rails'
 gem 'phonelib'
@@ -62,9 +62,6 @@ gem 'twilio-ruby', '~> 5.74.5'
 # gem "searchkick"
 # gem "opensearch-ruby"
 gem 'graphql', '~> 2.1'
-
-# remove if not workin!
-gem "responders"
 
 group :development, :test do
   gem 'capybara'
