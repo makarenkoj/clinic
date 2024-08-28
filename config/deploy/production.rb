@@ -56,6 +56,7 @@
 
 server '172.31.95.26', user: 'deploy', roles: %w[app db web]
 set :ssh_options, {
+  timeout: 30,
   forward_agent: true,
   auth_methods: %w[publickey],
   keys: %w[/home/makarenkoj/Завантажене/my_key.pem]
