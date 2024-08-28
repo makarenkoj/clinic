@@ -63,6 +63,9 @@ gem 'twilio-ruby', '~> 5.74.5'
 # gem "opensearch-ruby"
 gem 'graphql', '~> 2.1'
 
+# remove if not workin!
+gem "responders"
+
 group :development, :test do
   gem 'capybara'
   gem 'database_cleaner-active_record'
