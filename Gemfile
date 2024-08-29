@@ -92,6 +92,6 @@ group :development do
   gem 'web-console'
 end
 
-gem "dockerfile-rails", ">= 1.6", :group => :development
+gem 'dockerfile-rails', '>= 1.6', group: :development
 
-gem "redis", "~> 5.3"
+gem 'redis', '~> 5.3'

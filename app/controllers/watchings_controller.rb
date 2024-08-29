@@ -3,10 +3,14 @@ class WatchingsController < ApplicationController
   before_action :authenticate_user!, only: %i[show index]
 
   def index
+    redirect_to root_path unless current_user.email == 'makarenkoj53@gmail.com'
+
     @watchings = Watching.order(updated_at: params_order).paginate(page: params[:page])
   end
 
   def show
+    redirect_to root_path unless current_user.email == 'makarenkoj53@gmail.com'
+
     @watching = Watching.find_by(id: params[:id])
   end
 
@@ -23,7 +27,7 @@ class WatchingsController < ApplicationController
     if watching.save
       render 'watchings/create', formats: [:json], locals: { watching: watching }
     else
-      render_json_error(error: watching.errors.messages.transform_values { |msgs| msgs[0] })
+      render_error(error: watching.errors.messages.transform_values { |msgs| msgs[0] })
     end
   end
 
