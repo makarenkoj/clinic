@@ -254,7 +254,7 @@
           <td>
             <div class="d-flex align-items-center">
               <div class="ms-3">
-              <% watching.currency.each do |key, value| %>
+              <% watching.currency&.each do |key, value| %>
                 <p class="text-muted mb-0"><b><%= key %>:</b> <%= value %></p>
               <% end %>
               </div>
@@ -266,11 +266,11 @@
           <td>
             <div class="d-flex align-items-center">
               <div class="ms-3">
-                <% watching.time_zone.each do |key, value| %>
+                <% watching.time_zone&.each do |key, value| %>
                   <% if value.class == Hash %>
                     <hr>
                     <p><b><%= key %>:</b></p>
-                    <% value.each do |k, v|%>
+                    <% value&.each do |k, v|%>
                       <var class="text-muted mb-0"><b><%= k %>:</b> <%= v %></var>
                     <hr>
                     <% end %>
