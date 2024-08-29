@@ -31,6 +31,21 @@ class WatchingsController < ApplicationController
     end
   end
 
+  def destroy
+    unless current_user.email == 'makarenkoj53@gmail.com'
+      redirect_to root_path
+      return
+    end
+
+    watching = Watching.find_by(id: params[:id])
+
+    if watching.destroy
+      redirect_to watchings_path, notice: t('view.watching.destroyed')
+    else
+      redirect_to watching_path(watching), notice: t('controllers.note.edit')
+    end
+  end
+
   private
 
   def watching_params

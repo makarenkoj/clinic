@@ -5,6 +5,8 @@ require 'rails_helper'
 RSpec.describe '/watchings', type: :request do
   let!(:current_user) { create(:user, :patient_type, email: 'makarenkoj53@gmail.com') }
   let!(:bad_user) { create(:user, :patient_type) }
+  let!(:watching) { create(:watching) }
+  let(:watchings) { create_list(:watching, 5) }
   let(:params) do 
     { status: 'success',
       country: 'Italy',
@@ -48,8 +50,6 @@ RSpec.describe '/watchings', type: :request do
     it 'renders a successful response' do
       sign_in current_user
 
-      create_list(:watching, 5)
-
       get '/watchings'
 
       expect(response).to have_http_status(:ok)
@@ -57,8 +57,6 @@ RSpec.describe '/watchings', type: :request do
 
     it 'renders a bad response' do
       sign_in bad_user
-
-      create_list(:watching, 5)
 
       get '/watchings'
 
@@ -70,7 +68,6 @@ RSpec.describe '/watchings', type: :request do
   describe 'GET /show' do
     it 'renders a successful response' do
       sign_in current_user
-      watching = create(:watching)
 
       get "/watchings/#{watching.id}"
 
@@ -79,7 +76,6 @@ RSpec.describe '/watchings', type: :request do
 
     it 'renders a bad response' do
       sign_in bad_user
-      watching = create(:watching)
 
       get "/watchings/#{watching.id}"
 
@@ -106,17 +102,24 @@ RSpec.describe '/watchings', type: :request do
     end
   end
 
-  # describe 'DELETE /destroy' do
-  #   it 'destroys user' do
-  #     user = create(:user, :patient_type)
-  #     sign_in user
+  describe 'DELETE /destroy' do
+    it 'destroys watchings' do
+      sign_in current_user
 
-  #     expect do
-  #       delete "/users/#{user.id}"
-  #     end.to change(User, :count).by(-1)
+      expect { delete "/watchings/#{watching.id}", params: { id: watching.id } }.to change(Watching, :count).by(-1)
 
-  #     expect(response).to have_http_status(:found)
-  #     expect(response).to redirect_to(root_url)
-  #   end
-  # end
+      expect(response).to have_http_status(:found)
+      expect(response).to redirect_to(watchings_path)
+      expect(flash[:notice]).to eq(I18n.t('view.watching.destroyed'))
+    end
+
+    it 'did`nt destroys watchings' do
+      sign_in bad_user
+
+      expect { delete "/watchings/#{watching.id}", params: { id: watching.id } }.not_to change(Watching, :count)
+
+      expect(response).to have_http_status(:found)
+      expect(response).to redirect_to(root_path)
+    end
+  end
 end
