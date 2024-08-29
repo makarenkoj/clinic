@@ -20,112 +20,11 @@
           </td>
         </tr>
         <tr>
-          <th scope="row">STATUS:</th>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="text-muted mb-0"><%= @watching.status %></p>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">MESSAGE:</th>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="text-muted mb-0"><%= @watching.message %></p>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">COUNTRY:</th>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="text-muted mb-0"><%= @watching.country %></p>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">COUNTRY CODE:</th>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.country_code %></p>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">REGION:</th>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.region %></p>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">REGION NAME:</th>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.region_name %></p>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
           <th scope="row">CITY:</th>
           <td>
             <div class="d-flex align-items-center">
               <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.city %></p>
-              </div>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <th scope="row">ZIP:</th>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.zip %></p>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">LAT:</th>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.lat %></p>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">LON:</th>
-          <td><%# ip %>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.lon %></p>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">TIMEZONE:</th>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.timezone %></p>
+                <p class="text-muted mb-0"><%= @watching.city %></p>
               </div>
             </div>
           </td>
@@ -135,58 +34,250 @@
           <td>
             <div class="d-flex align-items-center">
               <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.isp %></p>
+                <p class="text-muted mb-0"><%= @watching.isp %></p>
               </div>
             </div>
           </td>
         </tr>
         <tr>
-          <th scope="row">ORG:</th>
+          <th scope="row">CONTINENT CODE:</th>
           <td>
             <div class="d-flex align-items-center">
               <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.org %></p>
+                <p class="text-muted mb-0"><%= @watching.continent_code %></p>
               </div>
             </div>
           </td>
         </tr>
         <tr>
-          <th scope="row">AS:</th>
+          <th scope="row">CONTINENT NAME:</th>
           <td>
             <div class="d-flex align-items-center">
               <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.as %></p>
-              </div>
-            </div>
-          </td>
-        </tr>
-
-        <tr>
-          <th scope="row">PROXY:</th>
-          <td>
-            <div class="d-flex align-items-center">
-              <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.proxy %></p>
+                <p class="text-muted mb-0"><%= watching.continent_name %></p>
               </div>
             </div>
           </td>
         </tr>
         <tr>
-          <th scope="row">HOSTING:</th>
+          <th scope="row">COUNTRY CODE2:</th>
           <td>
             <div class="d-flex align-items-center">
               <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.hosting %></p>
+                <p class="text-muted mb-0"><%= watching.country_code2 %></p>
               </div>
             </div>
           </td>
         </tr>
         <tr>
-          <th scope="row">QUERY:</th>
+          <th scope="row">COUNTRY CODE3:</th>
           <td>
             <div class="d-flex align-items-center">
               <div class="ms-3">
-                <p class="text-muted mb-0"><%= watching.query %></p>
+                <p class="text-muted mb-0"><%= watching.country_code3 %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">COUNTRY NAME:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.country_name %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">COUNTRY CAPITAL:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.country_capital %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">STATE PROV:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.state_prov %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">STATE CODE:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.state_code %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">DISTRICT:</th>
+          <td><%# ip %>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.district %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">ZIPCODE:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.zipcode %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">LATITUDE:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.latitude %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">LONGITUDE:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.longitude %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">IS EU:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.is_eu %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">CALLING CODE:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.calling_code %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">COUNTRY TLD:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.country_tld %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">LANGUAGES:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.languages %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>      
+          <th scope="row">COUNTRY FLAG:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <img src=<%= watching.country_flag %> alt="country flag">
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>      
+          <th scope="row">GEONAME ID:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.geoname_id %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>      
+          <th scope="row">CONNECTION TYPE:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.connection_type %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>      
+          <th scope="row">ORGANIZATION:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.organization %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>      
+          <th scope="row">COUNTRY EMOJI:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.country_emoji %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>      
+          <th scope="row">CURRENCY:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+              <% watching.currency.each do |key, value| %>
+                <p class="text-muted mb-0"><b><%= key %>:</b> <%= value %></p>
+              <% end %>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>      
+          <th scope="row">TIME ZONE:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <% watching.time_zone.each do |key, value| %>
+                  <% if value.class == Hash %>
+                    <hr>
+                    <p><b><%= key %>:</b></p>
+                    <% value.each do |k, v|%>
+                      <var class="text-muted mb-0"><b><%= k %>:</b> <%= v %></var>
+                    <hr>
+                    <% end %>
+                  <% else %>
+                    <p class="text-muted mb-0"><%= key %>: <%= value %></p>
+                  <% end %>
+                <% end %>
               </div>
             </div>
           </td>
