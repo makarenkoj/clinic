@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_25_134026) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_29_173425) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -157,26 +157,35 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_25_134026) do
 
   create_table "watchings", force: :cascade do |t|
     t.string "ip", null: false
-    t.string "status"
-    t.string "message"
-    t.string "country"
-    t.string "country_code"
-    t.string "region"
-    t.string "region_name"
     t.string "city"
-    t.string "zip"
-    t.string "lat"
-    t.string "lon"
-    t.string "timezone"
     t.string "isp"
-    t.string "org"
-    t.string "as"
-    t.string "proxy"
-    t.string "hosting"
-    t.string "query"
     t.integer "viewing", default: 1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "continent_code"
+    t.string "continent_name"
+    t.string "country_code2"
+    t.string "country_code3"
+    t.string "country_name"
+    t.string "country_name_official"
+    t.string "country_capital"
+    t.string "state_prov"
+    t.string "state_code"
+    t.string "district"
+    t.string "zipcode"
+    t.string "latitude"
+    t.string "longitude"
+    t.string "is_eu"
+    t.string "calling_code"
+    t.string "country_tld"
+    t.string "languages"
+    t.string "country_flag"
+    t.string "geoname_id"
+    t.string "connection_type"
+    t.string "organization"
+    t.string "country_emoji"
+    t.jsonb "currency"
+    t.jsonb "time_zone"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
