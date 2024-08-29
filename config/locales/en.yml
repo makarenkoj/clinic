@@ -315,6 +315,7 @@ en:
       delete_confirm: 'Are you sure?'
       ips: 'IPs'
       destroyed: 'Watching was successfully deleted :('
+      watchings: 'watchings ip'
     user:
       username: 'username'
       email: 'email'

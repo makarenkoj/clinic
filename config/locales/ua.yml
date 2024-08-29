@@ -363,6 +363,7 @@ ua:
       delete_confirm: 'Ти впевнений?'
       ips: 'IPs'
       destroyed: 'Watching успішно видалено :('
+      watchings: 'перегляд ip'
     user:
       username: "ім'я користувача"
       email: 'електронна адреса'
