@@ -21,6 +21,7 @@ module ApplicationHelper
   end
 
   # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   def paginate(result)
     if result.first.instance_of?(::DoctorProfile)
       content_tag :li, class: 'page-item' do
@@ -49,9 +50,19 @@ module ApplicationHelper
                                                       result.current_page + 1,
                                                       result.current_page >= result.total_pages))
       end
+    elsif result.first.instance_of?(::Watching)
+      content_tag :li, class: 'page-item' do
+        concat(render_watching_pagination_link('<<',
+                                               result.current_page - 1,
+                                               result.current_page <= 1))
+        concat(render_watching_pagination_link('>>',
+                                               result.current_page + 1,
+                                               result.current_page >= result.total_pages))
+      end
     end
   end
   # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 
   def render_doctor_profile_pagination_link(label, page, disabled)
     content_tag :li, class: ('page-item disabled' if disabled) do
@@ -68,6 +79,12 @@ module ApplicationHelper
   def render_notice_pagination_link(label, page, disabled)
     content_tag :li, class: ('page-item disabled' if disabled) do
       link_to_unless disabled, label, notes_path(page: page)
+    end
+  end
+
+  def render_watching_pagination_link(label, page, disabled)
+    content_tag :li, class: ('page-item disabled' if disabled) do
+      link_to_unless disabled, label, watchings_path(page: page)
     end
   end
 

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :doctors_appointments
     resources :notes
+    resources :watchings
 
     resources :pixels, only: %i[create update index] do
       collection do
