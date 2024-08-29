@@ -2026,6 +2026,7 @@ DEPENDENCIES
   database_cleaner-active_record
   debug
   devise
+  dockerfile-rails (>= 1.6)
   dotenv-rails
   factory_bot_rails
   faker
@@ -2040,8 +2041,10 @@ DEPENDENCIES
   pg (~> 1.1)
   phonelib
   puma (~> 5.0)
+  rack-cors
   rails (~> 7.0.4)
   rails-controller-testing
+  redis (~> 5.3)
   rspec-rails (~> 5.0.1)
   rubocop (~> 1.16)
   rubocop-faker

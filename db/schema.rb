@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_11_202142) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_25_134026) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -153,6 +153,30 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_11_202142) do
     t.datetime "remember_created_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "watchings", force: :cascade do |t|
+    t.string "ip", null: false
+    t.string "status"
+    t.string "message"
+    t.string "country"
+    t.string "country_code"
+    t.string "region"
+    t.string "region_name"
+    t.string "city"
+    t.string "zip"
+    t.string "lat"
+    t.string "lon"
+    t.string "timezone"
+    t.string "isp"
+    t.string "org"
+    t.string "as"
+    t.string "proxy"
+    t.string "hosting"
+    t.string "query"
+    t.integer "viewing", default: 1, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

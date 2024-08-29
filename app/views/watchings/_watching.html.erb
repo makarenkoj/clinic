@@ -1,0 +1,231 @@
+<span class="user">
+  <span class="user-name">
+    <% if request.path == watching_path(watching) %>
+    <table class="table align-middle mb-0 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th>FIELD</th>
+          <th>DATA</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">IP:</th>
+          <td><%# ip %>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= @watching.ip %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">STATUS:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= @watching.status %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">MESSAGE:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= @watching.message %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">COUNTRY:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= @watching.country %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">COUNTRY CODE:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.country_code %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">REGION:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.region %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">REGION NAME:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.region_name %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">CITY:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.city %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">ZIP:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.zip %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">LAT:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.lat %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">LON:</th>
+          <td><%# ip %>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.lon %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">TIMEZONE:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.timezone %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">ISP:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.isp %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">ORG:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.org %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">AS:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.as %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <th scope="row">PROXY:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.proxy %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">HOSTING:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.hosting %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">QUERY:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.query %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">VIEWING:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.viewing %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">CREATED AT:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.created_at %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">UPDATED AT:</th>
+          <td>
+            <div class="d-flex align-items-center">
+              <div class="ms-3">
+                <p class="text-muted mb-0"><%= watching.updated_at %></p>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <% else %>
+      <%= link_to root_path %>
+    <% end %>
+  </span>
+</span>
+<hr>
