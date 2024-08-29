@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% if current_user.email == 'makarenkoj53@gmail.com' %>
+  <%= render @watching %>
+  <div class="text-center">
+    <%= link_to t('view.watching.delete'), @watching,
+              data: { turbo_method: :delete, turbo_confirm: t('view.watching.delete_confirm')},
+              class: "btn btn-danger" %>
+  </div>
+<% else %>
+  <div class="text-center">
+    <p><%= t('activerecord.attributes.user.current_user')%></p>
+    <hr>
+  </div>
+<% end %>
+

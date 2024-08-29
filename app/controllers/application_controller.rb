@@ -72,4 +72,15 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit :sign_in, keys: %i[login password]
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs
   end
+
+  def camel_to_snake(camel_str)
+    result = {}
+    camel_str.each do |key, value|
+      snake_case_str = key.gsub(/([A-Z])/, '_\1').downcase
+      snake_key = snake_case_str[0] == '_' ? snake_case_str[1..] : snake_case_str
+      result[snake_key.to_sym] = value
+    end
+
+    result
+  end
 end

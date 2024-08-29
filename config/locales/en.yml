@@ -310,6 +310,11 @@ en:
       date: 'Date'
       body: 'Body'
   view:
+    watching:
+      delete: 'Delete'
+      delete_confirm: 'Are you sure?'
+      ips: 'IPs'
+      destroyed: 'Watching was successfully deleted :('
     user:
       username: 'username'
       email: 'email'
