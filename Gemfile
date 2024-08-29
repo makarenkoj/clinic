@@ -49,7 +49,8 @@ gem 'bootsnap', require: false
 gem 'image_processing', '~> 1.2'
 
 gem 'activeadmin'
-# gem 'aws-sdk', '~> 2'
+gem 'aws-sdk', '~> 3'
+gem 'aws-sdk-s3', '~> 1'
 gem 'bootstrap'
 gem 'cancancan'
 gem 'devise'

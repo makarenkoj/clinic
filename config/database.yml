@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: clinic_production
-  username: clinic
-  password: <%= ENV["CLINIC_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  # database: clinic_production
+  # username: clinic
+  # password: <%= ENV["CLINIC_DATABASE_PASSWORD"] %>
