@@ -49,7 +49,8 @@ gem 'bootsnap', require: false
 gem 'image_processing', '~> 1.2'
 
 gem 'activeadmin'
-gem 'aws-sdk', '~> 2'
+gem 'aws-sdk', '~> 3'
+gem 'aws-sdk-s3', '~> 1'
 gem 'bootstrap'
 gem 'cancancan'
 gem 'devise'
@@ -81,6 +82,10 @@ group :development, :test do
 end
 
 group :development do
+  gem 'capistrano', '~> 3.17', require: false
+  gem 'capistrano-passenger'
+  gem 'capistrano-rails', '~> 1.6', require: false
+  gem 'capistrano-rbenv', '~> 2.2'
   gem 'graphiql-rails', github: 'rmosolgo/graphiql-rails'
   gem 'rubocop', '~> 1.16', require: false
   gem 'rubocop-faker'
