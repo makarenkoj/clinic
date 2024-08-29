@@ -1,4 +1,26 @@
 json.watching do
-  json.extract! watching, :ip, :status, :message, :country, :country_code, :region, :region_name, :city, :zip, :lat, :lon, :timezone, :isp, :org, :as, :proxy, :hosting, 
-                :query
+  json.extract! watching, :ip, :city, :isp,
+                :viewing, :continent_code,
+                :continent_name, :country_code2,
+                :country_code3,
+                :country_name,
+                :country_name_official,
+                :country_capital,
+                :state_prov,
+                :state_code,
+                :district,
+                :zipcode,
+                :latitude,
+                :longitude,
+                :is_eu,
+                :calling_code,
+                :country_tld,
+                :languages,
+                :country_flag,
+                :geoname_id,
+                :connection_type,
+                :organization,
+                :country_emoji,
+                :currency,
+                :time_zone
 end
