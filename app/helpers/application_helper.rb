@@ -91,4 +91,8 @@ module ApplicationHelper
   def order_by(direction)
     params.to_unsafe_h.merge(order: direction, only_path: true).except(:script_name, :original_script_name)
   end
+
+  def trust_user
+    true if current_user.email == 'makarenkoj53@gmail.com'
+  end
 end
