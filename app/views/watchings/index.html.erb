@@ -27,6 +27,9 @@
                 <div class="d-flex justify-content-start align-items-center">
                 <p class="mb-0 text-uppercase"><i class="fas fa-cog me-2"><%= watching.viewing %></i> <span
                   class="text-muted small"></span></p>
+                <span class="ms-3 me-4">|</span></p>
+                <p class="mb-0 text-uppercase"><i class="fas fa-cog me-2"><%= watching.updated_at.strftime('%d-%m-%Y/%H:%M') %></i> <span
+                  class="text-muted small"></span></p>
                 </div>
               </div>
               <hr class="my-4">
