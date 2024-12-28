@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   scope '(:locale)', locale: /#{I18n.available_locales.join('|')}/ do
-    devise_for :users, controllers: { registrations: 'registrations' }
+    devise_for :users, controllers: { registrations: 'registrations' }, defaults: { format: :html }
 
     resources :users
     resources :doctor_profiles

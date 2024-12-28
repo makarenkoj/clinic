@@ -2,7 +2,7 @@ module ClinicConcern
   extend ActiveSupport::Concern
 
   included do
-    respond_to :json
+    respond_to :json, if: -> { request.format.json? }
     # rescue_from Errors::NoPermissionsError, with: :render_permissions_missing
     # rescue_from StandardError, with: :render_server_error unless Rails.env.development?
     # rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
