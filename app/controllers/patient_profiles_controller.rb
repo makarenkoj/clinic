@@ -3,11 +3,21 @@ class PatientProfilesController < ApplicationController
   before_action :check_patient!, except: %i[index show]
 
   def index
-    @patient_profiles = PatientProfile.order(updated_at: params_order).paginate(page: params[:page])
+    if current_user.doctor?
+      @patient_profiles = PatientProfile.order(updated_at: params_order).paginate(page: params[:page])
+    else
+      redirect_to doctor_profiles_url, notice: t('controllers.profile.not_a_doctor')
+    end
   end
 
   def show
     @patient_profile = PatientProfile.find(params[:id])
+
+    if current_user.doctor? || current_user.patient_profile == @patient_profile
+      @patient_profile
+    else
+      redirect_to patient_profile_url(current_user.patient_profile.id), notice: t('controllers.profile.not_a_doctor')
+    end
   end
 
   def edit

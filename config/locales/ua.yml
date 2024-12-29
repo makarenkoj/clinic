@@ -345,7 +345,9 @@ ua:
       updated: 'Ви оновили свій профіль'
       destroyed: 'Користувача успішно видалено :('
     profile:
-        not_your: 'Це не твій профайл!'
+      not_your: 'Це не твій профайл!'
+      not_a_doctor: 'Ви не лікар!'
+      not_a_patient: 'Ви не пацієнт!'
     subscriptions:
       created: 'Ви підписані на цю подію'
       destroyed: 'Учасник скасував підписку'
@@ -357,6 +359,8 @@ ua:
     note:
       edit: 'Ви не можете редагувати цю нотатку'
       updated: 'Примітку оновлено'
+    categories:
+      created: 'Категорія створена!'
   view:
     watching:
       delete: 'Видалити'
