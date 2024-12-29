@@ -42,7 +42,7 @@
               <%= link_to t('activerecord.attributes.user.delete_profile'), @doctor_profile.user, 
                           data: { turbo_method: :delete, turbo_confirm: t('activerecord.attributes.user.delete_profile_confirm')},
                           class: "btn btn-danger ms-1" %>
-            <% else %>
+            <% elsif current_user.patient? %>
               <%= link_to t('controllers.appointments.create'), new_doctors_appointment_url(doctor_id: @doctor_profile.id), class: 'btn btn-primary' %>
             <% end %>
 

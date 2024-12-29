@@ -295,6 +295,8 @@ en:
       destroyed: 'User was successfully deleted :('
     profile:
       not_your: 'This is not your profile!'
+      not_a_doctor: "You aren't a doctor!"
+      not_a_patient: "You aren't a patient!"
     subscriptions:
       created: 'You are subscribed to this event'
       destroyed: 'Member unsubscribed'
