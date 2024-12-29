@@ -311,6 +311,8 @@ en:
       id: 'Id'
       date: 'Date'
       body: 'Body'
+    categories:
+      created: 'Category created'
   view:
     watching:
       delete: 'Delete'

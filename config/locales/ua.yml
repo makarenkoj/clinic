@@ -359,6 +359,8 @@ ua:
     note:
       edit: 'Ви не можете редагувати цю нотатку'
       updated: 'Примітку оновлено'
+    categories:
+      created: 'Категорія створена!'
   view:
     watching:
       delete: 'Видалити'

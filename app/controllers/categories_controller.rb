@@ -1,8 +1,4 @@
 class CategoriesController < ApplicationController
-  def create
-    @category = Category.create(category_params)
-  end
-
   def index
     pagination_conditions = params[:next_categories] ? ['id >= ?', params[:next_categories]] : nil
 
@@ -15,6 +11,20 @@ class CategoriesController < ApplicationController
     category = Category.find(params[:id])
 
     @doctor_profiles = category.doctor_profiles
+  end
+
+  def new
+    @category = Category.build
+  end
+
+  def create
+    @category = Category.new(category_params)
+
+    if @category.save
+      redirect_to @category, notice: t('controllers.categories.created')
+    else
+      redirect_to new_category_path, notice: errors_message_html(@category.errors)
+    end
   end
 
   private

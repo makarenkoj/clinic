@@ -101,7 +101,16 @@ RSpec.describe '/doctors_appointments', type: :request do
     end
   end
 
-  describe 'DELETE /destroy' do
-    # TODO
-  end
+  # describe 'DELETE /destroy' do
+  #   it 'successful destroy' do
+  #     sign_in current_user
+  #     appointment = create(:doctors_appointment, patient_profile: current_user.patient_profile)
+
+  #     delete "/doctors_appointments/#{appointment.id}"
+
+  #     expect(response).to have_http_status(:found)
+  #     expect(current_user.patient_profile.doctors_appointments.last.reload.description).to eq('Update now description')
+  #     expect(flash['notice']).to eql('You have updated the appointment')
+  #   end
+  # end
 end
