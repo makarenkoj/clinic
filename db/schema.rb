@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_08_29_173425) do
+ActiveRecord::Schema[7.0].define(version: 2025_04_17_181916) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -115,6 +115,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_29_173425) do
     t.index ["patient_profile_id"], name: "index_doctors_appointments_on_patient_profile_id"
   end
 
+  create_table "js_payloads", force: :cascade do |t|
+    t.json "payload"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notes", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "date_time"
@@ -140,6 +146,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_29_173425) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_pixels_on_user_id"
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.bigint "doctor_profile_id", null: false
+    t.string "name", null: false
+    t.string "location", null: false
+    t.decimal "x"
+    t.decimal "y"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["doctor_profile_id"], name: "index_places_on_doctor_profile_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -198,4 +215,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_29_173425) do
   add_foreign_key "notes", "users"
   add_foreign_key "patient_profiles", "users"
   add_foreign_key "pixels", "users"
+  add_foreign_key "places", "doctor_profiles"
 end

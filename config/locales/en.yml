@@ -384,3 +384,17 @@ en:
       button: 'Clear'
       button_last: 'Remove last'
       last: 'Removed'
+  places:
+    create: 'Create a place'
+    edit: 'Update this place'
+    destroy: 'Destroy this place'
+    confirm_destroy: 'Are you sure you want to delete this place?'
+    map_popup: "Location of the establishment. Click to learn more."
+    go_to_place: "Go to place"
+    created: 'Place was successfully created.' 
+    updated: 'Place was successfully updated.'
+    destroyed: 'Place was successfully deleted.'
+    not_created: 'Place not created.'
+    not_updated: 'Place not updated.'
+    not_your: 'This is not your place!'
+    back: 'Back'
