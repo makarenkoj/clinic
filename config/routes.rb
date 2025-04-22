@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { registrations: 'registrations' }
 
     resources :users
-    resources :doctor_profiles
+    resources :doctor_profiles do
+      resources :places, only: %i[show new create edit update destroy]
+    end
     resources :patient_profiles
     resources :categories
     resources :doctors_appointments

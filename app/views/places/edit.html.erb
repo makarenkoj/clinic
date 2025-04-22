@@ -1,0 +1,7 @@
+<h1>Editing place</h1>
+
+<%= render "form", place: @place %>
+
+<div class="form-actions d-flex mb-2 flex-wrap py-1">
+  <%= link_to t('places.back'), doctor_profile_place_path(@place.doctor_profile), class: 'btn btn-primary px-4 py-2 rounded-2xl shadow bg-blue-600 hover:bg-blue-700 text-white font-semibold transition duration-200 me-2 mb-2' %>
+</div>

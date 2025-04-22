@@ -295,6 +295,8 @@ en:
       destroyed: 'User was successfully deleted :('
     profile:
       not_your: 'This is not your profile!'
+      not_a_doctor: "You aren't a doctor!"
+      not_a_patient: "You aren't a patient!"
     subscriptions:
       created: 'You are subscribed to this event'
       destroyed: 'Member unsubscribed'
@@ -309,6 +311,8 @@ en:
       id: 'Id'
       date: 'Date'
       body: 'Body'
+    categories:
+      created: 'Category created'
   view:
     watching:
       delete: 'Delete'
@@ -380,3 +384,17 @@ en:
       button: 'Clear'
       button_last: 'Remove last'
       last: 'Removed'
+  places:
+    create: 'Create a place'
+    edit: 'Update this place'
+    destroy: 'Destroy this place'
+    confirm_destroy: 'Are you sure you want to delete this place?'
+    map_popup: "Location of the establishment. Click to learn more."
+    go_to_place: "Go to place"
+    created: 'Place was successfully created.' 
+    updated: 'Place was successfully updated.'
+    destroyed: 'Place was successfully deleted.'
+    not_created: 'Place not created.'
+    not_updated: 'Place not updated.'
+    not_your: 'This is not your place!'
+    back: 'Back'
