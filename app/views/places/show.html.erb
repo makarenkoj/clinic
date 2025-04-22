@@ -1,0 +1,24 @@
+<% if notice.present? %>
+  <p style="color: green"><%= notice %></p>
+<% end %>
+
+<% if current_user.doctor_profile&.place == @place %>
+  <%= render @place %>
+
+  <div class="mt-3 d-flex gap-2">
+    <%= link_to t('places.edit'), edit_doctor_profile_place_path(@place.doctor_profile, @place), class: 'btn btn-primary' %>
+    <%= button_to t('places.destroy'), [@place.doctor_profile, @place], method: :delete,
+        data: { confirm: t('places.confirm_destroy') },
+        class: 'btn btn-danger' %>
+  </div>
+<% end %>
+
+<div class="container mt-4">
+  <div id="map"
+    data-controller="map"
+    data-map-x-value="<%= @place.x || 0 %>"
+    data-map-y-value="<%= @place.y || 0 %>"
+    data-map-popup-text-value="<%= t('places.map_popup') %>"
+    style="height: 400px; width: 100%;">
+  </div>
+</div>

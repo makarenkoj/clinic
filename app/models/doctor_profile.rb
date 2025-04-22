@@ -7,6 +7,8 @@ class DoctorProfile < ApplicationRecord
   has_many :doctors_appointments
   has_many :patient_profiles, through: :doctors_appointments
 
+  has_one :place, dependent: :destroy
+
   LIMIT = 10
 
   scope :paginate, lambda { |page:, per_page: LIMIT|
